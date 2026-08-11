@@ -14,6 +14,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        <link
+          rel="preload"
+          href="/images/herosection/hero-poster.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </head>
       <body className="bg-dark-bg text-slate-100 antialiased selection:bg-amber-500 selection:text-black">
         {children}
       </body>

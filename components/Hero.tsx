@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
-import { Sparkles, ArrowRight, IndianRupee, ChevronDown, Zap, Shield, Cpu, Activity, Play } from 'lucide-react';
+import { Sparkles, ArrowRight, IndianRupee, ChevronDown, Zap, Activity } from 'lucide-react';
 
 interface HeroProps {
   onOpenQuoteModal: () => void;
@@ -10,54 +10,51 @@ interface HeroProps {
 
 const TOTAL_FRAMES = 240;
 
-const getFramePath = (index: number) => {
-  const frameNum = String(index).padStart(3, '0');
-  return `/images/herosection/ezgif-frame-${frameNum}.png`;
-};
-
 export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [images, setImages] = useState<HTMLImageElement[]>([]);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [loadProgress, setLoadProgress] = useState(0);
+  
+  // Ref map to store downloaded images without re-rendering component
+  const imagesRef = useRef<Map<number, HTMLImageElement>>(new Map());
+  const [posterLoaded, setPosterLoaded] = useState(false);
   const [currentFrameNum, setCurrentFrameNum] = useState(1);
+  const isMobileRef = useRef<boolean>(false);
 
-  // Scroll tracking inside 350vh container
+  // Scroll tracking inside 380vh container
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start start', 'end end'],
   });
 
-  // Preload Images
-  useEffect(() => {
-    let loadedCount = 0;
-    const imgArray: HTMLImageElement[] = [];
-
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      const img = new Image();
-      img.src = getFramePath(i);
-      img.onload = () => {
-        loadedCount++;
-        setLoadProgress(Math.floor((loadedCount / TOTAL_FRAMES) * 100));
-        if (loadedCount === TOTAL_FRAMES) {
-          setImagesLoaded(true);
-        }
-      };
-      imgArray.push(img);
-    }
-    setImages(imgArray);
-  }, []);
-
-  // Draw Frame to Canvas
-  const drawFrame = (frameIndex: number) => {
+  // Helper to draw a frame to canvas with nearest loaded fallback
+  const drawFrame = useCallback((targetFrameIndex: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const img = images[frameIndex];
-    if (img && img.complete) {
+    // Find requested image or closest loaded frame
+    let img = imagesRef.current.get(targetFrameIndex);
+
+    if (!img || !img.complete) {
+      // Find nearest available frame
+      let closestDist = Infinity;
+      let closestFrameIndex = 1;
+
+      imagesRef.current.forEach((loadedImg, idx) => {
+        if (loadedImg.complete) {
+          const dist = Math.abs(idx - targetFrameIndex);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closestFrameIndex = idx;
+          }
+        }
+      });
+
+      img = imagesRef.current.get(closestFrameIndex);
+    }
+
+    if (img && img.complete && img.naturalWidth > 0) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
@@ -77,11 +74,93 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
         img.height * ratio
       );
     }
-  };
+  }, []);
+
+  // Preload poster image immediately on mount, then chunked load remaining frames
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    isMobileRef.current = isMobile;
+    const folder = isMobile ? 'mobile' : 'desktop';
+
+    // 1. Immediately load Frame 1 poster asset
+    const posterImg = new Image();
+    posterImg.src = '/images/herosection/hero-poster.webp';
+    posterImg.onload = () => {
+      imagesRef.current.set(1, posterImg);
+      setPosterLoaded(true);
+      if (canvasRef.current) {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
+        drawFrame(0);
+      }
+    };
+
+    // Helper to fetch an image frame
+    const loadFrame = (frameIndex: number): Promise<void> => {
+      return new Promise((resolve) => {
+        if (imagesRef.current.has(frameIndex)) {
+          resolve();
+          return;
+        }
+        const frameNum = String(frameIndex).padStart(3, '0');
+        const img = new Image();
+        img.src = `/images/herosection/${folder}/frame-${frameNum}.webp`;
+        img.onload = () => {
+          imagesRef.current.set(frameIndex, img);
+          resolve();
+        };
+        img.onerror = () => resolve();
+      });
+    };
+
+    // 2. Progressive loading: Step 1 = Keyframes (every 4th frame for instant scroll playback)
+    const keyframes: number[] = [];
+    for (let i = 1; i <= TOTAL_FRAMES; i += 4) {
+      keyframes.push(i);
+    }
+    if (!keyframes.includes(TOTAL_FRAMES)) keyframes.push(TOTAL_FRAMES);
+
+    let isCancelled = false;
+
+    const startProgressiveLoad = async () => {
+      // Fetch keyframes first
+      for (const frameIdx of keyframes) {
+        if (isCancelled) return;
+        await loadFrame(frameIdx);
+      }
+
+      // Step 2 = Load remaining intermediate frames in small idle batches
+      const remainingFrames: number[] = [];
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        if (!imagesRef.current.has(i)) {
+          remainingFrames.push(i);
+        }
+      }
+
+      const BATCH_SIZE = 8;
+      for (let i = 0; i < remainingFrames.length; i += BATCH_SIZE) {
+        if (isCancelled) return;
+        const batch = remainingFrames.slice(i, i + BATCH_SIZE);
+        await Promise.all(batch.map((idx) => loadFrame(idx)));
+        // Yield to main thread
+        await new Promise((r) => setTimeout(r, 15));
+      }
+    };
+
+    // Defer non-critical frame loading until main thread completes initial layout
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => startProgressiveLoad());
+    } else {
+      setTimeout(startProgressiveLoad, 100);
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [drawFrame]);
 
   // Sync scroll to frame rendering
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (images.length === 0) return;
     const frameIndex = Math.min(
       TOTAL_FRAMES - 1,
       Math.max(0, Math.floor(latest * (TOTAL_FRAMES - 1)))
@@ -107,23 +186,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [imagesLoaded]);
+  }, [drawFrame, scrollYProgress]);
 
   // SCROLL TRANSFORMS FOR APPLE-GRADE UI
-  // Frame Inset Transformation
   const framePadding = useTransform(scrollYProgress, [0.02, 0.25], ['0px', '28px']);
   const frameRadius = useTransform(scrollYProgress, [0.02, 0.25], ['0px', '28px']);
   const frameScale = useTransform(scrollYProgress, [0.02, 0.25], [1, 0.95]);
 
-  // Phase 1 Top Header (Fades cleanly as scroll begins so subject is completely visible)
+  // Header fade on scroll
   const headerOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
   const headerY = useTransform(scrollYProgress, [0, 0.15], [0, -40]);
 
-  // Phase 2 Floating Side Spec HUD (Appears when animation plays, positioned on bottom-left)
+  // Floating side HUD 1
   const hud1Opacity = useTransform(scrollYProgress, [0.18, 0.28, 0.60, 0.70], [0, 1, 1, 0]);
   const hud1X = useTransform(scrollYProgress, [0.18, 0.28, 0.60, 0.70], [-40, 0, 0, -40]);
 
-  // Phase 3 Final Side Callout HUD (Appears at finish, positioned on bottom-right)
+  // Floating side HUD 2
   const hud2Opacity = useTransform(scrollYProgress, [0.72, 0.82, 1], [0, 1, 1]);
   const hud2X = useTransform(scrollYProgress, [0.72, 0.82, 1], [40, 0, 0]);
 
@@ -145,22 +223,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
           }}
           className="relative w-full h-full overflow-hidden bg-[#1C1B18] shadow-2xl transition-all duration-100 ease-out"
         >
-          {/* Canvas Component (Center Unobstructed Visual Showcase) */}
+          {/* Canvas Component */}
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* Subtle Gradient Overlays for UI contrast without blocking the center subject */}
+          {/* Subtle Gradient Overlays for UI contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B18]/70 via-transparent to-[#1C1B18]/40 pointer-events-none" />
 
-          {/* Preloader */}
-          {!imagesLoaded && (
-            <div className="absolute inset-0 z-30 bg-[#E9E6DC] flex flex-col items-center justify-center p-6 text-center">
-              <div className="w-10 h-10 rounded-full border-2 border-[#1C1B18] border-t-[#d97706] animate-spin mb-4" />
-              <p className="text-xs font-bold text-[#1C1B18] uppercase tracking-wider font-mono">Initializing Solar Canvas Engine</p>
-              <p className="text-xs text-[#5A564A] mt-1 font-mono">{loadProgress}% loaded</p>
-            </div>
+          {/* Lightweight non-blocking initial placeholder fallback */}
+          {!posterLoaded && (
+            <div className="absolute inset-0 bg-[#1C1B18] animate-pulse pointer-events-none" />
           )}
 
           {/* TOP FLOATING HEADER (Phase 1: Initial view, fades cleanly on scroll) */}
