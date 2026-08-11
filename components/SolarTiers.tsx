@@ -1,0 +1,217 @@
+'use client';
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SOLAR_TIERS, SolarTier } from '../data/solarData';
+import { Zap, CheckCircle2, ArrowRight, Battery, Cpu, Home, ShieldCheck } from 'lucide-react';
+
+interface SolarTiersProps {
+  onSelectTier: (tier: SolarTier) => void;
+}
+
+export const SolarTiers: React.FC<SolarTiersProps> = ({ onSelectTier }) => {
+  const [selectedTierId, setSelectedTierId] = useState<string>('5kw');
+
+  const activeTier = SOLAR_TIERS.find((t) => t.id === selectedTierId) || SOLAR_TIERS[1];
+
+  return (
+    <section id="system-tiers" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#b45309] text-xs font-mono font-bold uppercase tracking-widest mb-4 shadow-sm"
+          >
+            <Zap className="w-3.5 h-3.5" /> High Efficiency Solar Systems
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight mb-6"
+          >
+            Engineered for Precision.{' '}
+            <span className="text-gradient-amber block">Tailored for Every Home.</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-base sm:text-lg text-[#5A564A]"
+          >
+            Select from our Tier-1 monocrystalline N-Type TOPCon solar packages. All packages qualify for up to ₹78,000 Direct Govt Bank Subsidy.
+          </motion.p>
+        </div>
+
+        {/* Tab Controls */}
+        <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto mb-14 p-2 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 shadow-sm">
+          {SOLAR_TIERS.map((tier) => (
+            <button
+              key={tier.id}
+              onClick={() => setSelectedTierId(tier.id)}
+              className={`flex-1 min-w-[120px] py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 relative ${
+                selectedTierId === tier.id
+                  ? 'text-[#E9E6DC]'
+                  : 'text-[#5A564A] hover:text-[#1C1B18]'
+              }`}
+            >
+              {selectedTierId === tier.id && (
+                <motion.div
+                  layoutId="activeTierTab"
+                  className="absolute inset-0 bg-[#1C1B18] rounded-xl -z-0"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 flex flex-col items-center gap-0.5">
+                <span>{tier.capacity}</span>
+                <span className="text-[10px] opacity-80">{tier.name}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Main Spec Card */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTier.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#DCD9D1] p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-[#1C1B18]/15 shadow-md"
+          >
+            
+            {/* Left Column */}
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="px-3.5 py-1 rounded-full bg-[#1C1B18] text-[#E9E6DC] text-xs font-bold uppercase tracking-wider">
+                    {activeTier.capacity}
+                  </span>
+                  {activeTier.badge && (
+                    <span className="px-3.5 py-1 rounded-full bg-[#059669]/15 text-[#059669] text-xs font-bold">
+                      {activeTier.badge}
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-[#1C1B18] mb-2">
+                  {activeTier.name} Solar Package
+                </h3>
+                <p className="text-sm text-[#5A564A] flex items-center gap-2 font-medium">
+                  <Home className="w-4 h-4 text-[#d97706]" /> Recommended for: {activeTier.recommendedFor}
+                </p>
+              </div>
+
+              {/* Pricing Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-2xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                <div>
+                  <p className="text-[11px] text-[#7E7A6C] uppercase tracking-wider font-mono font-semibold">Retail Price</p>
+                  <p className="text-lg font-bold text-[#7E7A6C] line-through">
+                    ₹{activeTier.priceRaw.toLocaleString('en-IN')}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[11px] text-[#059669] uppercase tracking-wider font-mono font-semibold">PM Surya Subsidy</p>
+                  <p className="text-lg font-bold text-[#059669]">
+                    -₹{activeTier.subsidyRaw.toLocaleString('en-IN')}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[11px] text-[#b45309] uppercase tracking-wider font-mono font-semibold">Effective Cost</p>
+                  <p className="text-2xl font-black text-[#b45309]">
+                    ₹{activeTier.finalPriceRaw.toLocaleString('en-IN')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Specs Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                  <p className="text-xs text-[#5A564A]">Daily Generation</p>
+                  <p className="text-base font-bold text-[#1C1B18] mt-1">{activeTier.dailyGeneration}</p>
+                </div>
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                  <p className="text-xs text-[#5A564A]">Annual Savings</p>
+                  <p className="text-base font-bold text-[#059669] mt-1">{activeTier.annualSavings}</p>
+                </div>
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                  <p className="text-xs text-[#5A564A]">Payback Period</p>
+                  <p className="text-base font-bold text-[#b45309] mt-1">{activeTier.paybackPeriod}</p>
+                </div>
+              </div>
+
+              {/* Hardware Details */}
+              <div className="space-y-3 pt-4 border-t border-[#1C1B18]/10">
+                <p className="text-xs font-mono font-bold uppercase text-[#b45309]">
+                  Tier-1 Hardware Specifications
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#38362E] font-medium">
+                  <div className="flex items-center gap-2">
+                    <Cpu className="w-3.5 h-3.5 text-[#d97706] flex-shrink-0" />
+                    <span>Panels: {activeTier.specs.panelType}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-3.5 h-3.5 text-[#d97706] flex-shrink-0" />
+                    <span>Inverter: {activeTier.specs.inverterEfficiency}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Battery className="w-3.5 h-3.5 text-[#d97706] flex-shrink-0" />
+                    <span>Storage: {activeTier.specs.batterySupport}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#d97706] flex-shrink-0" />
+                    <span>Warranty: {activeTier.specs.warranty}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column */}
+            <div className="lg:col-span-5 flex flex-col justify-between space-y-6 bg-[#E9E6DC] p-6 rounded-2xl border border-[#1C1B18]/10">
+              <div>
+                <h4 className="text-sm font-bold text-[#1C1B18] uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-[#d97706]" /> Supported Heavy Appliances
+                </h4>
+                <div className="space-y-3">
+                  {activeTier.appliances.map((appliance) => (
+                    <div
+                      key={appliance}
+                      className="flex items-center gap-3 p-3 rounded-xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-xs font-semibold text-[#1C1B18]"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#059669] flex-shrink-0" />
+                      <span>{appliance}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-xs text-[#5A564A]">
+                💡 <span className="font-bold text-[#1C1B18]">Required Roof Space:</span> {activeTier.roofArea} shade-free roof area.
+              </div>
+
+              <button
+                onClick={() => onSelectTier(activeTier)}
+                className="w-full py-4 rounded-full bg-[#1C1B18] text-[#E9E6DC] font-bold text-sm shadow-md hover:bg-[#d97706] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group"
+              >
+                <span>Select {activeTier.capacity} Package</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+          </motion.div>
+        </AnimatePresence>
+
+      </div>
+    </section>
+  );
+};
