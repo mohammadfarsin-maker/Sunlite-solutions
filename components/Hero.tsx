@@ -51,7 +51,7 @@ const CINEMATIC_STATES = [
 export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+
   const imagesRef = useRef<Map<number, HTMLImageElement>>(new Map());
   const [posterLoaded, setPosterLoaded] = useState(false);
   const [currentFrameNum, setCurrentFrameNum] = useState(1);
@@ -227,10 +227,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
   return (
     <div ref={targetRef} className="relative h-[300vh] bg-[#E9E6DC]">
-      
+
       {/* Sticky Container */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pt-16">
-        
+
         <motion.div
           style={{
             padding: framePadding,
@@ -313,10 +313,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
             </p>
           </div>
 
-          {/* Frame Label badge at center bottom */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 px-3.5 py-1.5 rounded-full bg-[#070C0F]/80 border border-white/15 text-[#cdd8da] text-[10px] font-mono font-bold tracking-widest shadow-md">
-            SCROLL STATE · {currentState.frameLabel}
-          </div>
+          {/* FINAL STATE WELCOME OVERLAY (APPEARS ON 4th/5th STATE) */}
+          {cinStateIndex >= 3 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-x-0 top-1/3 z-30 flex flex-col items-center text-center px-4 max-w-2xl mx-auto pointer-events-none"
+            >
+              <div className="px-6 py-4 rounded-3xl bg-[#090F12]/85 backdrop-blur-2xl border border-white/20 shadow-2xl">
+                <span className="px-3.5 py-1 rounded-full bg-[#ff8a1e] text-white font-mono text-[10px] uppercase font-bold tracking-widest inline-block mb-3">
+                  POWER YOUR FUTURE
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-md mb-2">
+                  Welcome to Sunlite Solutions
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300">
+                  Your trusted solar partner across Kottayam & Kerala. Reliable engineering, seamless subsidy guidance, and guaranteed performance.
+                </p>
+              </div>
+            </motion.div>
+          )}
 
         </motion.div>
       </div>

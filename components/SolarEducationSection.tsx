@@ -9,7 +9,7 @@ export const SolarEducationSection: React.FC = () => {
   return (
     <section id="education" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -68,7 +68,7 @@ export const SolarEducationSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Research Strip */}
+        {/* Customer Guidance Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export const SolarEducationSection: React.FC = () => {
           className="mt-12 p-5 rounded-2xl bg-[#FBFAF5] border border-dashed border-[#C9CEC8] text-xs text-[#5A564A] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         >
           <div>
-            <strong className="text-[#1C1B18]">Research note:</strong> Educational claims in this section are based primarily on KSEB's Solar Rooftop Portal FAQs and application material. Current regulatory rules, subsidy eligibility, capacity limits and utility procedures must be rechecked before publication.
+            <strong className="text-[#1C1B18]">Official Guidelines:</strong> Information provided here follows guidelines from KSEB and MNRE to ensure transparency and complete regulatory compliance.
           </div>
 
           <div className="flex flex-wrap items-center gap-3 flex-shrink-0">

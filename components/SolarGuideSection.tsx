@@ -9,7 +9,7 @@ export const SolarGuideSection: React.FC = () => {
   return (
     <section id="guide" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -69,15 +69,7 @@ export const SolarGuideSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Research Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 p-4 rounded-2xl bg-[#DCD9D1] border border-dashed border-[#1C1B18]/20 text-center text-xs text-[#5A564A]"
-        >
-          These guide topics are designed as the site's long-term topical-authority cluster. Each production article should cite current official sources where rules or schemes are discussed and should include a clear “last reviewed” date.
-        </motion.div>
+
 
       </div>
     </section>

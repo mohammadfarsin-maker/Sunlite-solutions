@@ -26,7 +26,7 @@ export const InstallationProcess: React.FC = () => {
   return (
     <section id="process" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -35,7 +35,7 @@ export const InstallationProcess: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#b45309] text-xs font-mono font-bold uppercase tracking-widest mb-4 shadow-sm"
           >
-            <Clock className="w-3.5 h-3.5" /> Turnkey Seamless Process
+            <Clock className="w-3.5 h-3.5" /> Sunlite Solutions Turnkey Process
           </motion.div>
 
           <motion.h2
@@ -62,7 +62,7 @@ export const InstallationProcess: React.FC = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* Step Selectors */}
           <div className="lg:col-span-5 space-y-4">
             {INSTALLATION_STEPS.map((step, idx) => {
@@ -75,20 +75,18 @@ export const InstallationProcess: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => setActiveStepIdx(idx)}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                    isActive
+                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${isActive
                       ? 'bg-[#DCD9D1] border-[#1C1B18]/30 shadow-md'
                       : 'bg-[#E9E6DC] border-[#1C1B18]/10 hover:bg-[#DCD9D1]/50'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                          isActive
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${isActive
                             ? 'bg-[#1C1B18] text-[#E9E6DC]'
                             : 'bg-[#DCD9D1] text-[#d97706] border border-[#1C1B18]/10'
-                        }`}
+                          }`}
                       >
                         {getStepIcon(step.icon)}
                       </div>
@@ -104,9 +102,8 @@ export const InstallationProcess: React.FC = () => {
                     </div>
 
                     <div
-                      className={`w-3.5 h-3.5 rounded-full border ${
-                        isActive ? 'bg-[#d97706] border-[#d97706]' : 'border-[#A6A192]'
-                      }`}
+                      className={`w-3.5 h-3.5 rounded-full border ${isActive ? 'bg-[#d97706] border-[#d97706]' : 'border-[#A6A192]'
+                        }`}
                     />
                   </div>
                 </motion.div>
@@ -172,7 +169,7 @@ export const InstallationProcess: React.FC = () => {
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              <span className="text-xs font-mono text-[#7E7A6C] font-semibold">Helios Turnkey Guarantee</span>
+
             </div>
 
           </motion.div>

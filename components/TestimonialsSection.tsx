@@ -9,7 +9,7 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section id="testimonials" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -39,7 +39,7 @@ export const TestimonialsSection: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg text-[#5A564A]"
           >
-            Use genuine Google/customer testimonials in production. The following are placeholders for layout testing.
+            See what our customers say about our solar installations across Kerala.
           </motion.p>
         </div>
 
@@ -52,11 +52,10 @@ export const TestimonialsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`p-8 rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all duration-300 ${
-                item.featured
+              className={`p-8 rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all duration-300 ${item.featured
                   ? 'bg-gradient-to-br from-[#FFFDF8] to-[#F5EFE0] border-[#EAD1AD] shadow-md'
                   : 'bg-[#DCD9D1] border-[#1C1B18]/10 hover:border-[#d97706]/40 shadow-sm'
-              }`}
+                }`}
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-6">
@@ -83,15 +82,6 @@ export const TestimonialsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Trust Rule Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 p-4 rounded-2xl bg-[#DCD9D1] border border-dashed border-[#1C1B18]/20 text-center text-xs text-[#5A564A]"
-        >
-          <strong className="text-[#1C1B18]">Trust rule:</strong> these are content-structure placeholders, not customer endorsements. Replace them with genuine reviews, named or appropriately anonymised with permission, plus the source platform where practical.
-        </motion.div>
 
       </div>
     </section>

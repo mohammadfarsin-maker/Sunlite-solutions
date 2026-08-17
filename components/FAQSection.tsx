@@ -15,7 +15,7 @@ export const FAQSection: React.FC = () => {
   return (
     <section id="faq" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -86,14 +86,14 @@ export const FAQSection: React.FC = () => {
         </div>
 
         {/* FAQ Note */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-10 text-center text-xs text-[#7E7A6C] font-medium"
         >
           FAQ copy is educational and should be reviewed against current KSEB, MNRE and Kerala regulatory material before launch. Do not treat it as legal, regulatory or financial advice.
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </section>

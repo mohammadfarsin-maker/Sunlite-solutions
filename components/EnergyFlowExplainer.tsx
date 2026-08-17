@@ -26,7 +26,7 @@ export const EnergyFlowExplainer: React.FC = () => {
             </h2>
           </div>
           <p className="text-sm text-slate-400 max-w-lg">
-            Use motion to explain the engineering, not merely decorate it. The production version can animate real system states or diagrams.
+            Understand how sunlight is converted into usable clean electricity for your home or business.
           </p>
         </div>
 

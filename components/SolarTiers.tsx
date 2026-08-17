@@ -11,13 +11,13 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = () => {
   const services = [
-    { num: '01', title: 'Residential Solar', desc: 'Rooftop solar systems designed around home electricity usage, roof area and site conditions.', href: '/solutions/residential-solar', featured: true },
-    { num: '02', title: 'Commercial Solar', desc: 'Solar solutions for offices, shops, institutions and other commercial properties.', href: '/solutions/commercial-solar' },
-    { num: '03', title: 'Industrial Solar', desc: 'Turnkey EPC solutions for larger rooftops and industrial electricity requirements.', href: '/solutions/industrial-solar' },
-    { num: '04', title: 'On-Grid Solar', desc: 'Grid-connected rooftop systems designed to reduce electricity purchases from the grid.', href: '/solutions/on-grid-solar' },
-    { num: '05', title: 'Hybrid Solar', desc: 'Solar generation combined with battery backup for savings plus additional power resilience.', href: '/solutions/hybrid-solar' },
-    { num: '06', title: 'Off-Grid Solar', desc: 'Independent solar systems for locations or applications where grid availability, reliability or operating requirements call for a standalone design.', href: '/solutions/off-grid-solar' },
-    { num: '07', title: 'AMC & Monitoring', desc: 'Preventive maintenance, system checks, cleaning guidance and performance support after commissioning.', href: '/solar-amc' },
+    { num: '01', title: 'Residential Solar', desc: 'Rooftop solar systems designed around home electricity usage, roof area and site conditions.', href: '/solutions/residential-solar', featured: true, image: '/solar-solutions/Residential-Solar.jpeg' },
+    { num: '02', title: 'Commercial Solar', desc: 'Solar solutions for offices, shops, institutions and other commercial properties.', href: '/solutions/commercial-solar', image: '/solar-solutions/commercial-solar.jpeg' },
+    { num: '03', title: 'Industrial Solar', desc: 'Turnkey EPC solutions for larger rooftops and industrial electricity requirements.', href: '/solutions/industrial-solar', image: '/solar-solutions/industrial-solar.jpeg' },
+    { num: '04', title: 'On-Grid Solar', desc: 'Grid-connected rooftop systems designed to reduce electricity purchases from the grid.', href: '/solutions/on-grid-solar', image: '/solar-solutions/On-Grid-Solar.jpeg' },
+    { num: '05', title: 'Hybrid Solar', desc: 'Solar generation combined with battery backup for savings plus additional power resilience.', href: '/solutions/hybrid-solar', image: '/solar-solutions/hybrid.jpeg' },
+    { num: '06', title: 'Off-Grid Solar', desc: 'Independent solar systems for locations or applications where grid availability, reliability or operating requirements call for a standalone design.', href: '/solutions/off-grid-solar', image: '/solar-solutions/off-grid-Solar.jpeg' },
+    { num: '07', title: 'AMC & Monitoring', desc: 'Preventive maintenance, system checks, cleaning guidance and performance support after commissioning.', href: '/solar-amc', image: '/solar-solutions/monitoring.jpeg', isLast: true },
   ];
 
   return (
@@ -31,7 +31,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
             One solar partner from planning to performance.
           </h2>
           <p className="text-base sm:text-lg text-[#5A564A]">
-            Solar is not one product. The right architecture depends on your electricity use, roof, grid connection, backup needs, operating hours and future loads. These solution pages should become the core commercial landing pages of the production site.
+            Solar is not one product. The right architecture depends on your electricity use, roof, grid connection, backup needs, operating hours and future loads.
           </p>
         </div>
 
@@ -43,23 +43,36 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
-              className={`p-6 rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-lg ${
-                s.featured
-                  ? 'bg-gradient-to-br from-[#FFFAD2]/50 to-[#F3EFE5] border-[#F0D7B9]'
+              className={`rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-xl group ${s.isLast ? 'lg:col-span-1 lg:col-start-2' : ''
+                } ${s.featured
+                  ? 'bg-[#FFFDF8] border-[#F0D7B9]'
                   : 'bg-[#E9E6DC] border-[#1C1B18]/10'
-              }`}
+                }`}
             >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-[#ff8a1e]/15 text-[#e9680b] font-black text-sm flex items-center justify-center mb-6">
+              {/* Image Banner */}
+              <div className="relative h-44 w-full overflow-hidden bg-[#1C1B18]">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B18]/80 via-transparent to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-[#ff8a1e] text-white font-black text-xs flex items-center justify-center shadow-md">
                   {s.num}
                 </div>
-                <h3 className="text-xl font-bold text-[#1C1B18] mb-2">{s.title}</h3>
-                <p className="text-xs text-[#5A564A] leading-relaxed mb-8">{s.desc}</p>
               </div>
 
-              <a href={s.href} className="text-xs font-extrabold text-[#e9680b] hover:underline flex items-center gap-1">
-                Explore →
-              </a>
+              {/* Content */}
+              <div className="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 className="text-xl font-bold text-[#1C1B18] mb-2">{s.title}</h3>
+                  <p className="text-xs text-[#5A564A] leading-relaxed mb-6">{s.desc}</p>
+                </div>
+
+                <a href={s.href} className="text-xs font-extrabold text-[#e9680b] hover:underline flex items-center gap-1 mt-auto">
+                  Explore →
+                </a>
+              </div>
             </motion.article>
           ))}
         </div>
@@ -77,7 +90,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
   return (
     <section id="system-tiers" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -117,11 +130,10 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             <button
               key={tier.id}
               onClick={() => setSelectedTierId(tier.id)}
-              className={`flex-1 min-w-[120px] py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 relative ${
-                selectedTierId === tier.id
-                  ? 'text-[#E9E6DC]'
-                  : 'text-[#5A564A] hover:text-[#1C1B18]'
-              }`}
+              className={`flex-1 min-w-[120px] py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 relative ${selectedTierId === tier.id
+                ? 'text-[#E9E6DC]'
+                : 'text-[#5A564A] hover:text-[#1C1B18]'
+                }`}
             >
               {selectedTierId === tier.id && (
                 <motion.div
@@ -148,7 +160,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#DCD9D1] p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-[#1C1B18]/15 shadow-md"
           >
-            
+
             {/* Left Column */}
             <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
               <div>

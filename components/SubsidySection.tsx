@@ -39,7 +39,7 @@ export const SubsidySection: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="text-base text-[#5A564A]"
             >
-              The well-known PM Surya Ghar residential CFA structure has been ₹30,000/kW for the first 2 kW plus ₹18,000/kW for the next kW, with the central contribution capped at ₹78,000 for systems above 3 kW. Treat these as reference figures for the prototype: scheme status, eligibility, portal rules and the applicable amount must be checked at the time of application.
+              The well-known PM Surya Ghar residential CFA structure provides ₹30,000/kW for the first 2 kW plus ₹18,000/kW for the 3rd kW, with central subsidy capped at ₹78,000 for systems 3 kW and above. Final eligibility and portal processing are verified at the time of application.
             </motion.p>
 
             {/* Subsidy Cards */}

@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
               Sunlite Solutions
             </a>
             <p className="text-xs text-[#9aa7b0] leading-relaxed max-w-sm">
-              Kerala solar EPC prototype focused on interactive product education, lead generation and SEO-ready architecture.
+              Sunlite Solutions is Kerala's trusted solar EPC partner for residential, commercial and industrial rooftop solar installations.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
 
         {/* Foot Bottom */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#9aa7b0] gap-2">
-          <span>© 2026 Sunlite Solutions. Prototype UI — all factual content subject to verification.</span>
+          <span>© {new Date().getFullYear()} Sunlite Solutions. All rights reserved.</span>
           <span>Kottayam, Kerala · +91 94473 05489</span>
         </div>
 
