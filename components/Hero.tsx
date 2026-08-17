@@ -321,7 +321,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
               transition={{ duration: 0.5 }}
               className="absolute inset-x-0 top-1/3 z-30 flex flex-col items-center text-center px-4 max-w-2xl mx-auto pointer-events-none"
             >
-              <div className="px-6 py-4 rounded-3xl bg-[#090F12]/85 backdrop-blur-2xl border border-white/20 shadow-2xl">
+              <div className="px-6 py-4">
                 <span className="px-3.5 py-1 rounded-full bg-[#ff8a1e] text-white font-mono text-[10px] uppercase font-bold tracking-widest inline-block mb-3">
                   POWER YOUR FUTURE
                 </span>
