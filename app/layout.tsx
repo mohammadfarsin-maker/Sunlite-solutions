@@ -2,9 +2,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Helios Solar Systems | Next-Gen Tier-1 Solar PV & PM Surya Ghar Subsidy',
-  description: 'Switch to Tier-1 TOPCon Solar PV technology in India. Get up to ₹78,000 PM Surya Ghar Govt Subsidy, zero electricity bills, and 25 years of guaranteed returns.',
-  keywords: ['solar energy', 'solar panels India', 'PM Surya Ghar scheme', '3kw solar system price', '5kw solar system price', '8kw solar system price', 'solar ROI calculator India'],
+  title: 'Sunlite Solutions | Solar Panel Installation Company in Kottayam, Kerala',
+  description: 'Sunlite Solutions helps homes, businesses and industrial properties across Kerala plan and install rooftop solar. Explore solar options, system sizing, KSEB guidance, PM Surya Ghar information, project stories and a free site assessment.',
+  keywords: ['Sunlite Solutions', 'solar energy Kerala', 'solar panel installation Kottayam', 'PM Surya Ghar scheme Kerala', 'KSEB solar net metering'],
+  icons: {
+    icon: '/logo-favicon.png',
+  },
 };
 
 export default function RootLayout({
@@ -15,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
+        <link rel="icon" href="/logo-favicon.png" />
         <link
           rel="preload"
           href="/images/herosection/hero-poster.webp"
@@ -29,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

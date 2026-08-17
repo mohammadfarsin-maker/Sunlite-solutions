@@ -3,11 +3,22 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { WhySolar } from '../components/WhySolar';
-import { SolarTiers } from '../components/SolarTiers';
-import { ROICalculator } from '../components/ROICalculator';
+import { TrustStatsStrip } from '../components/TrustStatsStrip';
+import { SolarAdvisorSection } from '../components/SolarAdvisorSection';
+import { ServicesSection, SolarTiers } from '../components/SolarTiers';
+import { EnergyFlowExplainer } from '../components/EnergyFlowExplainer';
+import { SolarEducationSection } from '../components/SolarEducationSection';
+import { WhySunliteSection } from '../components/WhySunliteSection';
 import { InstallationProcess } from '../components/InstallationProcess';
-import { CompanyDetails } from '../components/CompanyDetails';
+import { SubsidySection } from '../components/SubsidySection';
+import { ROICalculator } from '../components/ROICalculator';
+import { ProjectsSection } from '../components/ProjectsSection';
+import { FeaturedCaseStudySection } from '../components/FeaturedCaseStudySection';
+import { TestimonialsSection } from '../components/TestimonialsSection';
+import { SolarGuideSection } from '../components/SolarGuideSection';
+import { ServiceAreasSection } from '../components/ServiceAreasSection';
+import { FAQSection } from '../components/FAQSection';
+import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 import { QuoteModal } from '../components/QuoteModal';
 import { SolarTier } from '../data/solarData';
@@ -29,32 +40,68 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-dark-bg text-slate-100 relative">
-      {/* Apple-style floating dark glass Header */}
+    <main className="min-h-screen bg-[#E9E6DC] text-[#1C1B18] relative">
+      {/* Fixed Sticky Header overlapping Hero smoothly */}
       <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
-      {/* Hero Section - Ready for future custom animation */}
+      {/* Hero Section (Cinematic scroll-driven background) */}
       <Hero onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
-      {/* Why Solar Section - Grid Tariff vs Solar comparison */}
-      <WhySolar />
+      {/* Trust Stats Strip */}
+      <TrustStatsStrip />
 
-      {/* Solar System Tiers - 3kW, 5kW, 8kW, 12kW+ specs */}
+      {/* Interactive Solar Advisor (Persona Section) */}
+      <SolarAdvisorSection onOpenQuoteModal={() => handleOpenQuoteModal()} />
+
+      {/* Services Section */}
+      <ServicesSection onSelectTier={(tier) => handleOpenQuoteModal(tier)} />
+
+      {/* System Tiers Section */}
       <SolarTiers onSelectTier={(tier) => handleOpenQuoteModal(tier)} />
 
-      {/* Interactive ROI & Profit Calculator in Indian Rupees (₹) */}
-      <ROICalculator onOpenQuoteModal={() => handleOpenQuoteModal()} />
+      {/* Energy Flow Explainer (Dark Section) */}
+      <EnergyFlowExplainer />
 
-      {/* 4-Step Turnkey Installation Process */}
+      {/* Solar Education Section */}
+      <SolarEducationSection />
+
+      {/* Why Sunlite Section */}
+      <WhySunliteSection />
+
+      {/* Installation Process */}
       <InstallationProcess />
 
-      {/* Company Details & 25-Year Warranty Trust Seal */}
-      <CompanyDetails />
+      {/* Government Subsidy Section */}
+      <SubsidySection />
+
+      {/* Interactive ROI Calculator */}
+      <ROICalculator onOpenQuoteModal={() => handleOpenQuoteModal()} />
+
+      {/* Projects Section */}
+      {/* <ProjectsSection /> */}
+
+      {/* Featured Case Study (Dark Section) */}
+      <FeaturedCaseStudySection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* Solar Guide Knowledge Hub */}
+      <SolarGuideSection />
+
+      {/* Service Areas */}
+      {/* <ServiceAreasSection /> */}
+
+      {/* FAQ Accordion Section */}
+      <FAQSection />
+
+      {/* Final Contact CTA */}
+      <ContactSection onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
       {/* Footer */}
       <Footer />
 
-      {/* Interactive Lead Generation Quote Modal */}
+      {/* Quote Modal */}
       <QuoteModal
         isOpen={quoteModalOpen}
         onClose={handleCloseQuoteModal}
@@ -63,3 +110,4 @@ export default function Home() {
     </main>
   );
 }
+

@@ -5,12 +5,72 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SOLAR_TIERS, SolarTier } from '../data/solarData';
 import { Zap, CheckCircle2, ArrowRight, Battery, Cpu, Home, ShieldCheck } from 'lucide-react';
 
-interface SolarTiersProps {
+interface ServicesSectionProps {
   onSelectTier: (tier: SolarTier) => void;
 }
 
-export const SolarTiers: React.FC<SolarTiersProps> = ({ onSelectTier }) => {
-  const [selectedTierId, setSelectedTierId] = useState<string>('5kw');
+export const ServicesSection: React.FC<ServicesSectionProps> = () => {
+  const services = [
+    { num: '01', title: 'Residential Solar', desc: 'Rooftop solar systems designed around home electricity usage, roof area and site conditions.', href: '/solutions/residential-solar', featured: true },
+    { num: '02', title: 'Commercial Solar', desc: 'Solar solutions for offices, shops, institutions and other commercial properties.', href: '/solutions/commercial-solar' },
+    { num: '03', title: 'Industrial Solar', desc: 'Turnkey EPC solutions for larger rooftops and industrial electricity requirements.', href: '/solutions/industrial-solar' },
+    { num: '04', title: 'On-Grid Solar', desc: 'Grid-connected rooftop systems designed to reduce electricity purchases from the grid.', href: '/solutions/on-grid-solar' },
+    { num: '05', title: 'Hybrid Solar', desc: 'Solar generation combined with battery backup for savings plus additional power resilience.', href: '/solutions/hybrid-solar' },
+    { num: '06', title: 'Off-Grid Solar', desc: 'Independent solar systems for locations or applications where grid availability, reliability or operating requirements call for a standalone design.', href: '/solutions/off-grid-solar' },
+    { num: '07', title: 'AMC & Monitoring', desc: 'Preventive maintenance, system checks, cleaning guidance and performance support after commissioning.', href: '/solar-amc' },
+  ];
+
+  return (
+    <section id="services" className="py-28 bg-[#DCD9D1] border-t border-[#1C1B18]/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#e9680b] mb-4 block">
+            Solar solutions
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight mb-6">
+            One solar partner from planning to performance.
+          </h2>
+          <p className="text-base sm:text-lg text-[#5A564A]">
+            Solar is not one product. The right architecture depends on your electricity use, roof, grid connection, backup needs, operating hours and future loads. These solution pages should become the core commercial landing pages of the production site.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s, idx) => (
+            <motion.article
+              key={s.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.05 }}
+              className={`p-6 rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-lg ${
+                s.featured
+                  ? 'bg-gradient-to-br from-[#FFFAD2]/50 to-[#F3EFE5] border-[#F0D7B9]'
+                  : 'bg-[#E9E6DC] border-[#1C1B18]/10'
+              }`}
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-[#ff8a1e]/15 text-[#e9680b] font-black text-sm flex items-center justify-center mb-6">
+                  {s.num}
+                </div>
+                <h3 className="text-xl font-bold text-[#1C1B18] mb-2">{s.title}</h3>
+                <p className="text-xs text-[#5A564A] leading-relaxed mb-8">{s.desc}</p>
+              </div>
+
+              <a href={s.href} className="text-xs font-extrabold text-[#e9680b] hover:underline flex items-center gap-1">
+                Explore →
+              </a>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => {
+  const [selectedTierId, setSelectedTierId] = useState<string>('3-5kw');
+
 
   const activeTier = SOLAR_TIERS.find((t) => t.id === selectedTierId) || SOLAR_TIERS[1];
 
