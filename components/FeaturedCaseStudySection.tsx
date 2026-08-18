@@ -30,7 +30,10 @@ export const FeaturedCaseStudySection: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-[1.2] mb-6"
           >
-            Real Performance. <span className="text-gradient-amber">Measured Results in Kerala.</span>
+            Real Performance.{' '}
+            <span className="bg-gradient-to-r from-[#ffb45d] via-[#ffa23a] to-[#ff8a1e] bg-clip-text text-transparent block sm:inline">
+              Measured Results in Kerala.
+            </span>
           </motion.h2>
 
           <motion.p
