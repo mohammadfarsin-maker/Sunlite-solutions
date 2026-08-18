@@ -262,39 +262,62 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
           {/* MAIN HERO COPY OVERLAY */}
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             style={{ opacity: headerOpacity, y: headerY }}
             className="absolute inset-x-0 top-20 sm:top-28 z-20 flex flex-col items-center text-center px-4 max-w-4xl mx-auto pointer-events-auto"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E9E6DC]/90 backdrop-blur-md border border-white/20 mb-3 sm:mb-4 shadow-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E9E6DC]/90 backdrop-blur-md border border-white/20 mb-3 sm:mb-4 shadow-soft-sm hover:border-[#d97706]/40 transition-colors"
+            >
               <span className="w-2 h-2 rounded-full bg-[#ff8a1e] animate-pulse" />
-              <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#1C1B18] uppercase tracking-wide">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#1C1B18] uppercase tracking-wider">
                 Solar EPC · Kottayam, Kerala
               </span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-3 sm:mb-4 drop-shadow-md">
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-3 sm:mb-4 drop-shadow-md"
+            >
               Kerala's Trusted Solar Panel Installation Company
-            </h1>
+            </motion.h1>
 
-            <p className="text-xs sm:text-base text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed mb-5 sm:mb-6 drop-shadow">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-xs sm:text-base text-slate-200 max-w-2xl mx-auto font-normal leading-relaxed mb-5 sm:mb-6 drop-shadow"
+            >
               Residential, commercial and industrial solar systems — from site assessment and system design to installation, subsidy guidance and ongoing support.
-            </p>
+            </motion.p>
 
-            <div className="flex items-center justify-center gap-3 flex-wrap">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex items-center justify-center gap-3 flex-wrap"
+            >
               <a
                 href="#contact"
-                className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#ff8a1e] to-[#e9680b] text-white font-bold text-xs shadow-xl hover:scale-105 transition-all flex items-center gap-2"
+                className="px-6 py-3 rounded-full bg-gradient-to-r from-[#ff8a1e] to-[#e9680b] text-white font-bold text-xs shadow-soft-lg hover:scale-[1.03] hover:shadow-[#ff8a1e]/20 transition-all duration-200 flex items-center gap-2 active:scale-95"
               >
                 Get a Free Site Survey ↗
               </a>
 
               <a
                 href="#calculator"
-                className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs backdrop-blur-md transition-all flex items-center gap-1.5"
+                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs backdrop-blur-md hover:scale-[1.03] transition-all duration-200 flex items-center gap-1.5 active:scale-95"
               >
                 Calculate My Savings
               </a>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* RESPONSIVE FLOATING CARDS CONTAINER (NO OVERLAP ON MOBILE) */}

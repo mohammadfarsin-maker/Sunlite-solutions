@@ -22,15 +22,18 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
 
   return (
     <section id="services" className="py-28 bg-[#DCD9D1] border-t border-[#1C1B18]/10 relative overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-gradient-to-br from-[#d97706]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#e9680b] mb-4 block">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#e9680b] mb-4 block">
             Solar solutions
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight mb-6">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-[1.2] mb-6">
             One solar partner from planning to performance.
           </h2>
-          <p className="text-base sm:text-lg text-[#5A564A]">
+          <p className="text-base sm:text-lg text-[#5A564A] leading-relaxed font-normal">
             Solar is not one product. The right architecture depends on your electricity use, roof, grid connection, backup needs, operating hours and future loads.
           </p>
         </div>
@@ -39,12 +42,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
           {services.map((s, idx) => (
             <motion.article
               key={s.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
-              className={`rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-xl group ${s.isLast ? 'lg:col-span-1 lg:col-start-2' : ''
-                } bg-[#E9E6DC] border-[#1C1B18]/10 `}
+              transition={{ duration: 0.5, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className={`rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg group ${s.isLast ? 'lg:col-span-1 lg:col-start-2' : ''
+                } bg-[#E9E6DC] border-[#1C1B18]/10 hover:border-[#d97706]/40`}
             >
               {/* Image Banner */}
               <div className="relative h-44 w-full overflow-hidden bg-[#1C1B18]">
@@ -54,7 +57,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B18]/80 via-transparent to-transparent" />
-                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-[#ff8a1e] text-white font-black text-xs flex items-center justify-center shadow-md">
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-xl bg-[#ff8a1e] text-white font-black text-xs flex items-center justify-center shadow-soft-sm">
                   {s.num}
                 </div>
               </div>
@@ -62,11 +65,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
               {/* Content */}
               <div className="p-6 flex flex-col justify-between flex-grow">
                 <div>
-                  <h3 className="text-xl font-bold text-[#1C1B18] mb-2">{s.title}</h3>
-                  <p className="text-xs text-[#5A564A] leading-relaxed mb-6">{s.desc}</p>
+                  <h3 className="text-xl font-bold text-[#1C1B18] mb-2 tracking-tight">{s.title}</h3>
+                  <p className="text-xs text-[#5A564A] leading-relaxed mb-6 font-normal">{s.desc}</p>
                 </div>
 
-                <a href={s.href} className="text-xs font-extrabold text-[#e9680b] hover:underline flex items-center gap-1 mt-auto">
+                <a href={s.href} className="text-xs font-extrabold text-[#e9680b] hover:underline flex items-center gap-1.5 mt-auto group-hover:translate-x-0.5 transition-transform">
                   Explore →
                 </a>
               </div>
@@ -81,11 +84,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
 export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => {
   const [selectedTierId, setSelectedTierId] = useState<string>('3-5kw');
 
-
   const activeTier = SOLAR_TIERS.find((t) => t.id === selectedTierId) || SOLAR_TIERS[1];
 
   return (
     <section id="system-tiers" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
+      {/* Subtle radial glow */}
+      <div className="absolute bottom-10 left-10 w-[500px] h-[500px] bg-gradient-to-tr from-[#d97706]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
@@ -94,7 +99,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#b45309] text-xs font-mono font-bold uppercase tracking-widest mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#b45309] text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-soft-sm hover:border-[#d97706]/40 transition-colors"
           >
             <Zap className="w-3.5 h-3.5" /> High Efficiency Solar Systems
           </motion.div>
@@ -104,7 +109,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight mb-6"
+            className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-[1.2] mb-6"
           >
             Engineered for Precision.{' '}
             <span className="text-gradient-amber block">Tailored for Every Home.</span>
@@ -115,14 +120,14 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-lg text-[#5A564A]"
+            className="text-base sm:text-lg text-[#5A564A] leading-relaxed font-normal"
           >
             Select from our Tier-1 monocrystalline N-Type TOPCon solar packages. All packages qualify for up to ₹78,000 Direct Govt Bank Subsidy.
           </motion.p>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto mb-14 p-2 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 shadow-sm">
+        <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto mb-14 p-2 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 shadow-soft-sm">
           {SOLAR_TIERS.map((tier) => (
             <button
               key={tier.id}
@@ -135,13 +140,13 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
               {selectedTierId === tier.id && (
                 <motion.div
                   layoutId="activeTierTab"
-                  className="absolute inset-0 bg-[#1C1B18] rounded-xl -z-0"
+                  className="absolute inset-0 bg-[#1C1B18] rounded-xl -z-0 shadow-soft-sm"
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
               <span className="relative z-10 flex flex-col items-center gap-0.5">
                 <span>{tier.capacity}</span>
-                <span className="text-[10px] opacity-80">{tier.name}</span>
+                <span className="text-[10px] opacity-80 font-medium">{tier.name}</span>
               </span>
             </button>
           ))}
@@ -155,24 +160,24 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#DCD9D1] p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-[#1C1B18]/15 shadow-md"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#DCD9D1] p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-[#1C1B18]/15 shadow-soft-md"
           >
 
             {/* Left Column */}
             <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3.5 py-1 rounded-full bg-[#1C1B18] text-[#E9E6DC] text-xs font-bold uppercase tracking-wider">
+                  <span className="px-3.5 py-1 rounded-full bg-[#1C1B18] text-[#E9E6DC] text-xs font-bold uppercase tracking-wider shadow-soft-sm">
                     {activeTier.capacity}
                   </span>
                   {activeTier.badge && (
-                    <span className="px-3.5 py-1 rounded-full bg-[#059669]/15 text-[#059669] text-xs font-bold">
+                    <span className="px-3.5 py-1 rounded-full bg-[#059669]/15 text-[#059669] text-xs font-bold border border-[#059669]/20">
                       {activeTier.badge}
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-extrabold text-[#1C1B18] mb-2">
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-[#1C1B18] mb-2 tracking-tight">
                   {activeTier.name} Solar Package
                 </h3>
                 <p className="text-sm text-[#5A564A] flex items-center gap-2 font-medium">
@@ -181,7 +186,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
               </div>
 
               {/* Pricing Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-2xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-2xl bg-[#E9E6DC] border border-[#1C1B18]/10 shadow-soft-sm">
                 <div>
                   <p className="text-[11px] text-[#7E7A6C] uppercase tracking-wider font-mono font-semibold">Retail Price</p>
                   <p className="text-lg font-bold text-[#7E7A6C] line-through">
@@ -204,15 +209,15 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
 
               {/* Specs Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10 shadow-soft-sm">
                   <p className="text-xs text-[#5A564A]">Daily Generation</p>
                   <p className="text-base font-bold text-[#1C1B18] mt-1">{activeTier.dailyGeneration}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10 shadow-soft-sm">
                   <p className="text-xs text-[#5A564A]">Annual Savings</p>
                   <p className="text-base font-bold text-[#059669] mt-1">{activeTier.annualSavings}</p>
                 </div>
-                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10">
+                <div className="p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10 shadow-soft-sm">
                   <p className="text-xs text-[#5A564A]">Payback Period</p>
                   <p className="text-base font-bold text-[#b45309] mt-1">{activeTier.paybackPeriod}</p>
                 </div>
@@ -246,7 +251,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             </div>
 
             {/* Right Column */}
-            <div className="lg:col-span-5 flex flex-col justify-between space-y-6 bg-[#E9E6DC] p-6 rounded-2xl border border-[#1C1B18]/10">
+            <div className="lg:col-span-5 flex flex-col justify-between space-y-6 bg-[#E9E6DC] p-6 rounded-2xl border border-[#1C1B18]/10 shadow-soft-sm">
               <div>
                 <h4 className="text-sm font-bold text-[#1C1B18] uppercase tracking-wider mb-4 flex items-center gap-2">
                   <Zap className="w-4 h-4 text-[#d97706]" /> Supported Heavy Appliances
@@ -270,7 +275,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
 
               <button
                 onClick={() => onSelectTier(activeTier)}
-                className="w-full py-4 rounded-full bg-[#1C1B18] text-[#E9E6DC] font-bold text-sm shadow-md hover:bg-[#d97706] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full py-4 rounded-full bg-[#1C1B18] text-[#E9E6DC] font-bold text-sm shadow-soft-md hover:bg-[#d97706] hover:text-white transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 group"
               >
                 <span>Select {activeTier.capacity} Package</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
