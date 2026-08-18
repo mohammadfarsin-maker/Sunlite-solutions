@@ -43,20 +43,56 @@ export const SubsidySection: React.FC = () => {
             </motion.p>
 
             {/* Subsidy Cards */}
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="p-5 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center">
-                <small className="text-xs text-[#5A564A] block">1 kW</small>
-                <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹30,000*</strong>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center overflow-hidden group shadow-sm flex flex-col justify-between">
+                <div className="h-28 w-full relative overflow-hidden bg-[#1C1B18]">
+                  <img
+                    src="/solar-solutions/Residential-Solar.jpeg"
+                    alt="1 kW Solar Subsidy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-transparent" />
+                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">1 kW Plant</span>
+                </div>
+                <div className="p-4">
+                  <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
+                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹30,000*</strong>
+                </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center">
-                <small className="text-xs text-[#5A564A] block">2 kW</small>
-                <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹60,000*</strong>
+              <div className="rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center overflow-hidden group shadow-sm flex flex-col justify-between">
+                <div className="h-28 w-full relative overflow-hidden bg-[#1C1B18]">
+                  <img
+                    src="/solar-solutions/On-Grid-Solar.jpeg"
+                    alt="2 kW Solar Subsidy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-transparent" />
+                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">2 kW Plant</span>
+                </div>
+                <div className="p-4">
+                  <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
+                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹60,000*</strong>
+                </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center">
-                <small className="text-xs text-[#5A564A] block">3 kW+</small>
-                <strong className="text-xl sm:text-2xl font-black text-[#e9680b] block mt-1">Up to ₹78,000*</strong>
+              <div className="rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-center overflow-hidden group shadow-sm flex flex-col justify-between">
+                <div className="h-28 w-full relative overflow-hidden bg-[#1C1B18]">
+                  <img
+                    src="/images/subsidy_clipboard_1786989540561.jpg"
+                    alt="3 kW Plus Solar Subsidy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-transparent" />
+                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#e9680b] text-white text-[10px] font-bold">3 kW+ Max Cap</span>
+                </div>
+                <div className="p-4">
+                  <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
+                  <strong className="text-xl sm:text-2xl font-black text-[#e9680b] block mt-1">Up to ₹78,000*</strong>
+                </div>
               </div>
             </div>
 

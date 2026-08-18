@@ -52,10 +52,7 @@ export const TestimonialsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className={`p-8 rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all duration-300 ${item.featured
-                  ? 'bg-gradient-to-br from-[#FFFDF8] to-[#F5EFE0] border-[#EAD1AD] shadow-md'
-                  : 'bg-[#DCD9D1] border-[#1C1B18]/10 hover:border-[#d97706]/40 shadow-sm'
-                }`}
+              className="p-8 rounded-3xl relative overflow-hidden border border-[#1C1B18]/10 hover:border-[#d97706]/40 bg-[#DCD9D1] shadow-sm flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-6">

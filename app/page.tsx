@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { TrustStatsStrip } from '../components/TrustStatsStrip';
+import { WhySolar } from '../components/WhySolar';
 import { SolarAdvisorSection } from '../components/SolarAdvisorSection';
 import { ServicesSection, SolarTiers } from '../components/SolarTiers';
 import { EnergyFlowExplainer } from '../components/EnergyFlowExplainer';
@@ -20,6 +21,7 @@ import { ServiceAreasSection } from '../components/ServiceAreasSection';
 import { FAQSection } from '../components/FAQSection';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
+import { ScrollToTopButton } from '../components/ScrollToTopButton';
 import { QuoteModal } from '../components/QuoteModal';
 import { SolarTier } from '../data/solarData';
 
@@ -50,6 +52,9 @@ export default function Home() {
       {/* Trust Stats Strip */}
       <TrustStatsStrip />
 
+      {/* Why Solar Section */}
+      <WhySolar />
+
       {/* Interactive Solar Advisor (Persona Section) */}
       <SolarAdvisorSection onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
@@ -63,7 +68,7 @@ export default function Home() {
       <EnergyFlowExplainer />
 
       {/* Solar Education Section */}
-      <SolarEducationSection />
+      {/* <SolarEducationSection /> */}
 
       {/* Why Sunlite Section */}
       <WhySunliteSection />
@@ -100,6 +105,9 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Scroll To Top Button */}
+      <ScrollToTopButton />
 
       {/* Quote Modal */}
       <QuoteModal

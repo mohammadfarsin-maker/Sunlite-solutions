@@ -65,6 +65,28 @@ export const Footer: React.FC = () => {
 
         </div>
 
+        {/* Office Location Map Section */}
+        <div className="py-8 border-b border-[#222d35]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-[#ffb45d]">Visit Our Solar Office</h3>
+              <p className="text-sm font-extrabold text-white mt-1">Sunlite Solutions Headquarters · Kottayam, Kerala</p>
+            </div>
+            <span className="text-xs text-[#9aa7b0]">Opp. KSEB Substation, Chingavanam, Kottayam, Kerala 686531</span>
+          </div>
+
+          <div className="w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-[#222d35] shadow-lg relative bg-[#121b24]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3934.7840784403984!2d76.515722!3d9.5274799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06290069e4292d%3A0x3892be698137945c!2sSunlite%20Solutions!5e0!3m2!1sen!2sin!4v1787032395714!5m2!1sen!2sin"
+              className="w-full h-full border-0"
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Sunlite Solutions Solar Office Location Map"
+            />
+          </div>
+        </div>
+
         {/* Foot Bottom */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#9aa7b0] gap-2">
           <span>© {new Date().getFullYear()} Sunlite Solutions. All rights reserved.</span>

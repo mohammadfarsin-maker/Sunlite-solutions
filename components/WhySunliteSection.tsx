@@ -31,47 +31,55 @@ export const WhySunliteSection: React.FC = () => {
     <section id="about" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        {/* Centered Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#ff8a1e] text-xs font-mono font-bold uppercase tracking-widest mb-4 shadow-sm"
+          >
+            <ShieldCheck className="w-3.5 h-3.5" /> Why Sunlite Solutions
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight mb-4"
+          >
+            Local execution. Technical thinking. Long-term support.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-base sm:text-lg text-[#5A564A]"
+          >
+            Sunlite Solutions delivers engineered solar systems tailored for home and business roofs across Kerala, backed by reliable installation and dedicated after-sales support.
+          </motion.p>
+        </div>
+
+        {/* 2-Column Grid: Items on Left, Slider on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column */}
-          <div className="lg:col-span-6 space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCD9D1] border border-[#1C1B18]/15 text-[#ff8a1e] text-xs font-mono font-bold uppercase tracking-widest shadow-sm"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" /> Why Sunlite Solutions
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-tight"
-            >
-              Local execution. Technical thinking. Long-term support.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-base text-[#5A564A]"
-            >
-              Sunlite Solutions delivers engineered solar systems tailored for home and business roofs across Kerala, backed by reliable installation and dedicated after-sales support.
-            </motion.p>
-
-            <div className="space-y-3 pt-4">
-              {WHY_SUNLITE_POINTS.map((pt) => (
-                <div key={pt.step} className="p-4 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10">
-                  <b className="text-sm font-bold text-[#1C1B18] block">{pt.step} · {pt.title}</b>
-                  <p className="text-xs text-[#5A564A] mt-1">{pt.description}</p>
-                </div>
-              ))}
-            </div>
+          {/* Left Column - 4 Points */}
+          <div className="lg:col-span-6 space-y-4">
+            {WHY_SUNLITE_POINTS.map((pt) => (
+              <motion.div
+                key={pt.step}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-5 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 hover:border-[#ff8a1e]/40 transition-all shadow-sm"
+              >
+                <b className="text-sm font-bold text-[#1C1B18] block">{pt.step} · {pt.title}</b>
+                <p className="text-xs text-[#5A564A] mt-1 leading-relaxed">{pt.description}</p>
+              </motion.div>
+            ))}
           </div>
 
           {/* Right Column: Slideshow */}

@@ -44,10 +44,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05 }}
               className={`rounded-3xl relative overflow-hidden border flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-xl group ${s.isLast ? 'lg:col-span-1 lg:col-start-2' : ''
-                } ${s.featured
-                  ? 'bg-[#FFFDF8] border-[#F0D7B9]'
-                  : 'bg-[#E9E6DC] border-[#1C1B18]/10'
-                }`}
+                } bg-[#E9E6DC] border-[#1C1B18]/10 `}
             >
               {/* Image Banner */}
               <div className="relative h-44 w-full overflow-hidden bg-[#1C1B18]">

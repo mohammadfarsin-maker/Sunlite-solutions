@@ -21,9 +21,9 @@ export default function RootLayout({
         <link rel="icon" href="/logo-favicon.png" />
         <link
           rel="preload"
-          href="/images/herosection/hero-poster.webp"
+          href="/images/herosection/desktop/ezgif-frame-001.png"
           as="image"
-          type="image/webp"
+          type="image/png"
           fetchPriority="high"
         />
       </head>

@@ -10,7 +10,7 @@ export const WhySolar: React.FC = () => {
 
   const initialMonthlyBill = 6000;
   const annualGridCostYear1 = initialMonthlyBill * 12;
-  
+
   let totalGridCost = 0;
   let currentYearGridCost = annualGridCostYear1;
   for (let i = 0; i < comparisonYears; i++) {
@@ -24,7 +24,7 @@ export const WhySolar: React.FC = () => {
   return (
     <section id="why-solar" className="py-28 relative bg-[#E9E6DC] border-t border-[#1C1B18]/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
@@ -67,28 +67,41 @@ export const WhySolar: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#DCD9D1] p-8 rounded-3xl relative overflow-hidden border border-[#1C1B18]/10 hover:border-[#d97706]/40 transition-all duration-300 hover:shadow-lg group"
+              className="bg-[#DCD9D1] rounded-3xl relative overflow-hidden border border-[#1C1B18]/10 hover:border-[#d97706]/40 transition-all duration-300 hover:shadow-xl group flex flex-col justify-between"
             >
-              <div className="flex items-start justify-between mb-6">
-                <span className="px-3.5 py-1 rounded-full bg-[#E9E6DC] border border-[#1C1B18]/10 text-[#b45309] text-xs font-bold">
-                  {reason.tag}
-                </span>
-                <div className="text-right">
-                  <p className="text-2xl font-black text-[#1C1B18] group-hover:text-[#d97706] transition-colors">
+              {/* Card Image Banner */}
+              <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#1C1B18]">
+                <img
+                  src={reason.image}
+                  alt={reason.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-black/40" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3.5 py-1.5 rounded-full bg-[#1C1B18]/80 backdrop-blur-md border border-white/20 text-[#ffb45d] text-xs font-bold shadow-md">
+                    {reason.tag}
+                  </span>
+                </div>
+                <div className="absolute bottom-3 right-4 text-right">
+                  <p className="text-2xl font-black text-[#1C1B18] drop-shadow-sm">
                     {reason.metric}
                   </p>
-                  <p className="text-[10px] uppercase tracking-wider text-[#7E7A6C] font-mono font-semibold">
+                  <p className="text-[10px] uppercase tracking-wider text-[#38362E] font-mono font-bold">
                     {reason.metricLabel}
                   </p>
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-[#1C1B18] mb-3 leading-snug">
-                {reason.title}
-              </h3>
-              <p className="text-sm text-[#5A564A] leading-relaxed">
-                {reason.description}
-              </p>
+              {/* Card Content */}
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl font-bold text-[#1C1B18] mb-3 leading-snug">
+                  {reason.title}
+                </h3>
+                <p className="text-sm text-[#5A564A] leading-relaxed">
+                  {reason.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -119,11 +132,10 @@ export const WhySolar: React.FC = () => {
                 <button
                   key={yr}
                   onClick={() => setComparisonYears(yr)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                    comparisonYears === yr
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${comparisonYears === yr
                       ? 'bg-[#1C1B18] text-[#E9E6DC] shadow-md'
                       : 'text-[#5A564A] hover:text-[#1C1B18]'
-                  }`}
+                    }`}
                 >
                   {yr} Years
                 </button>
@@ -132,7 +144,7 @@ export const WhySolar: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-            
+
             {/* Grid */}
             <div className="p-6 rounded-2xl bg-red-500/10 border border-red-500/20 flex flex-col justify-between">
               <div>
@@ -159,7 +171,7 @@ export const WhySolar: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="flex items-center gap-2 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                    <CheckCircle2 className="w-4 h-4" /> Helios Solar Asset
+                    <CheckCircle2 className="w-4 h-4" /> Sunlite Solar Asset
                   </span>
                   <span className="text-[10px] text-emerald-700 font-mono font-bold">Net Wealth Generator</span>
                 </div>

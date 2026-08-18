@@ -192,28 +192,32 @@ export const WHY_SOLAR_REASONS = [
     description: 'Traditional utility grid prices rise consistently every year. Solar locks in your electricity production cost at ₹0/unit for 25+ years.',
     tag: 'Financial Freedom',
     metric: '100%',
-    metricLabel: 'Protection from Inflation'
+    metricLabel: 'Protection from Inflation',
+    image: '/solar-solutions/Residential-Solar.jpeg'
   },
   {
     title: 'PM Surya Ghar Govt Subsidy up to ₹78,000',
     description: 'Direct Benefit Transfer (DBT) deposited directly into your bank account under the Central Government solar scheme, lowering your initial investment significantly.',
     tag: 'Govt Backed',
     metric: '₹78K',
-    metricLabel: 'Direct Subsidy'
+    metricLabel: 'Direct Subsidy',
+    image: '/images/subsidy_clipboard_1786989540561.jpg'
   },
   {
     title: '25-Year Guaranteed Performance Warranty',
     description: 'Our Tier-1 N-Type TOPCon panels are engineered to retain at least 87.4% generation efficiency even after 25 years of continuous exposure.',
     tag: 'Tier-1 Engineering',
     metric: '25 Yrs',
-    metricLabel: 'Performance Shield'
+    metricLabel: 'Performance Shield',
+    image: '/solar-solutions/On-Grid-Solar.jpeg'
   },
   {
     title: '100% Green Energy & Grid Independence',
     description: 'Produce your own clean, renewable power daily and insulate your home from KSEB power cuts with seamless hybrid solar storage.',
     tag: 'Energy Independence',
     metric: '100%',
-    metricLabel: 'Clean Energy'
+    metricLabel: 'Clean Energy',
+    image: '/solar-solutions/hybrid.jpeg'
   }
 ];
 
@@ -378,49 +382,43 @@ export const SOLAR_GUIDES = [
     tag: 'Subsidy',
     title: 'PM Surya Ghar Subsidy in Kerala',
     description: 'Understand the residential CFA structure, eligibility, application pathway and what must be verified before installation.',
-    href: '/solar-subsidy-kerala'
+    href: '/solar-subsidy-kerala',
+    image: '/images/subsidy_clipboard_1786989540561.jpg'
   },
   {
     tag: 'Solar basics',
     title: 'On-Grid vs Off-Grid vs Hybrid Solar',
     description: 'Compare grid connection, batteries, backup behaviour, economics and where each architecture makes sense.',
-    href: '/on-grid-vs-hybrid-solar'
+    href: '/on-grid-vs-hybrid-solar',
+    image: '/images/ongrid_hybrid_diagram_1786989713249.jpg'
   },
   {
     tag: 'Cost & savings',
     title: 'How Much Does Rooftop Solar Cost in Kerala?',
     description: 'Explain the real drivers of EPC pricing instead of publishing one misleading universal price.',
-    href: '/solar-cost-kerala'
+    href: '/solar-cost-kerala',
+    image: '/images/cost_calculator_gold_1786989622310.jpg'
   },
   {
     tag: 'KSEB',
     title: 'KSEB Solar & Net Metering: A Practical Guide',
     description: 'Walk through application, technical feasibility, installation, testing, metering and the documents customers should expect.',
-    href: '/kseb-net-metering'
+    href: '/kseb-net-metering',
+    image: '/images/meter_kseb_1786989606336.jpg'
   },
   {
     tag: 'Kerala guide',
     title: 'Does Solar Work During Kerala\'s Monsoon?',
     description: 'Set realistic expectations for cloudy weather, seasonal variation, system sizing and backup requirements.',
-    href: '/solar-monsoon-kerala'
+    href: '/solar-monsoon-kerala',
+    image: '/images/monsoon_house_rain_1786989646557.jpg'
   },
   {
     tag: 'Maintenance',
     title: 'Solar Panel Maintenance & Cleaning Guide',
     description: 'Explain cleaning, inspections, inverter checks, monitoring and when professional service is useful.',
-    href: '/solar-maintenance'
-  },
-  {
-    tag: 'Planning',
-    title: 'How Much Roof Space Does Solar Need?',
-    description: 'Explain usable area, shade, roof geometry, access, structural considerations and future expansion.',
-    href: '/solar-roof-area'
-  },
-  {
-    tag: 'Economics',
-    title: 'Solar ROI & Payback in Kerala',
-    description: 'Explain self-consumption, tariff, export, capex, subsidy, degradation and why payback differs by customer.',
-    href: '/solar-roi-kerala'
+    href: '/solar-maintenance',
+    image: '/images/solar_cleaning_brush_1786989667806.jpg'
   }
 ];
 

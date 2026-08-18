@@ -30,8 +30,20 @@ export const EnergyFlowExplainer: React.FC = () => {
           </p>
         </div>
 
-        {/* Nodes Grid */}
+        {/* Nodes Grid with Animated Connecting Lines */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 relative">
+          
+          {/* Desktop Connecting Line behind nodes */}
+          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-[#253946] -z-0">
+            <motion.div 
+              className="h-full bg-gradient-to-r from-[#ff8a1e] via-[#ffb45d] to-[#ff8a1e] shadow-[0_0_12px_#ff8a1e]"
+              initial={{ width: '0%' }}
+              whileInView={{ width: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, ease: 'easeInOut' }}
+            />
+          </div>
+
           {nodes.map((n, idx) => {
             const Icon = n.icon;
             return (
@@ -40,14 +52,14 @@ export const EnergyFlowExplainer: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="text-center group"
+                transition={{ delay: idx * 0.2 }}
+                className="text-center group relative z-10"
               >
-                <div className="w-24 h-24 rounded-full mx-auto flex items-center justify-center bg-[#16242e] border border-[#334652] shadow-xl text-white group-hover:border-[#ff8a1e] group-hover:scale-105 transition-all duration-300 mb-4">
-                  <Icon className="w-10 h-10 text-[#ff8a1e]" />
+                <div className="w-24 h-24 rounded-full mx-auto flex items-center justify-center bg-[#16242e] border-2 border-[#334652] shadow-2xl text-white group-hover:border-[#ff8a1e] group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,138,30,0.4)] transition-all duration-300 mb-4 cursor-pointer">
+                  <Icon className="w-10 h-10 text-[#ff8a1e] group-hover:rotate-12 transition-transform duration-300" />
                 </div>
-                <b className="block text-base font-bold text-white mb-1">{n.label}</b>
-                <small className="block text-xs text-slate-400 leading-relaxed">{n.desc}</small>
+                <b className="block text-base font-bold text-white mb-1 group-hover:text-[#ffb45d] transition-colors">{n.label}</b>
+                <small className="block text-xs text-slate-400 leading-relaxed max-w-[160px] mx-auto">{n.desc}</small>
               </motion.div>
             );
           })}

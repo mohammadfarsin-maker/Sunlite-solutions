@@ -68,8 +68,8 @@ export const FeaturedCaseStudySection: React.FC = () => {
             </a>
           </div>
 
-          {/* Side Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          {/* Side Cards - Centered vertically */}
+          <div className="lg:col-span-5 flex flex-col justify-center gap-4">
             <div className="p-6 rounded-2xl bg-[#E9E6DC] text-[#1C1B18] border border-[#1C1B18]/10 shadow-md">
               <h3 className="text-base font-extrabold text-[#1C1B18] mb-2">01 · Customer problem</h3>
               <p className="text-xs text-[#5A564A] leading-relaxed">

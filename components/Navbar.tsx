@@ -26,10 +26,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
 
   const navLinks = [
     { name: 'Why Solar', href: '#why-solar' },
+    { name: 'Solutions', href: '#services' },
     { name: 'System Tiers', href: '#system-tiers' },
-    { name: 'ROI Calculator', href: '#calculator' },
+    { name: 'Why Sunlite', href: '#about' },
     { name: 'Process', href: '#process' },
-    { name: 'About Us', href: '#company' },
+    { name: 'Subsidy', href: '#subsidy' },
+    { name: 'ROI Calculator', href: '#calculator' },
+    { name: 'FAQs', href: '#faq' },
   ];
 
   return (
@@ -38,20 +41,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal }) => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'py-3.5 bg-[#E9E6DC]/90 backdrop-blur-2xl border-b border-[#1C1B18]/10 shadow-lg shadow-black/[0.03]'
-            : 'py-5 bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'py-3.5 bg-[#E9E6DC]/90 backdrop-blur-2xl border-b border-[#1C1B18]/10 shadow-lg shadow-black/[0.03]'
+          : 'py-5 bg-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            
+
             {/* Logo - Sunlite Solutions */}
             <a href="#" className="flex items-center group">
-              <img 
-                src="/images/logo-icon.png" 
-                alt="Sunlite Solutions" 
+              <img
+                src="/logo-icon.png"
+                alt="Sunlite Solutions"
                 className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </a>

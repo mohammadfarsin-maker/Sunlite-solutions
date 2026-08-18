@@ -114,9 +114,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
     const folder = isMobile ? 'mobile' : 'desktop';
 
     const posterImg = new Image();
-    posterImg.src = '/images/herosection/hero-poster.webp';
+    posterImg.src = isMobile 
+      ? '/images/herosection/mobile/frame-001.webp'
+      : '/images/herosection/desktop/ezgif-frame-001.png';
     posterImg.onload = () => {
-      imagesRef.current.set(1, posterImg);
+      imagesRef.current.set(0, posterImg);
       setPosterLoaded(true);
       if (canvasRef.current) {
         canvasRef.current.width = window.innerWidth;
@@ -133,7 +135,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
         }
         const frameNum = String(frameIndex).padStart(3, '0');
         const img = new Image();
-        img.src = `/images/herosection/${folder}/frame-${frameNum}.webp`;
+        img.src = isMobile 
+          ? `/images/herosection/mobile/frame-${frameNum}.webp`
+          : `/images/herosection/desktop/ezgif-frame-${frameNum}.png`;
         img.onload = () => {
           imagesRef.current.set(frameIndex, img);
           resolve();
@@ -229,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
     <div ref={targetRef} className="relative h-[300vh] bg-[#E9E6DC]">
 
       {/* Sticky Container */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pt-16">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
 
         <motion.div
           style={{
@@ -246,71 +250,80 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B18]/80 via-transparent to-[#1C1B18]/50 pointer-events-none" />
 
+          {/* HERO SKELETON LOADING STATE */}
           {!posterLoaded && (
-            <div className="absolute inset-0 bg-[#1C1B18] animate-pulse pointer-events-none" />
+            <div className="absolute inset-0 bg-[#1C1B18] z-30 flex flex-col items-center justify-center p-6 text-center">
+              <div className="w-12 h-12 rounded-full border-4 border-[#ff8a1e]/20 border-t-[#ff8a1e] animate-spin mb-4" />
+              <p className="text-xs font-mono font-bold text-slate-300 uppercase tracking-widest animate-pulse">
+                Loading Sunlite Solar Experience...
+              </p>
+            </div>
           )}
 
           {/* MAIN HERO COPY OVERLAY */}
           <motion.div
             style={{ opacity: headerOpacity, y: headerY }}
-            className="absolute inset-x-0 top-16 sm:top-20 z-20 flex flex-col items-center text-center px-4 max-w-4xl mx-auto pointer-events-auto"
+            className="absolute inset-x-0 top-20 sm:top-28 z-20 flex flex-col items-center text-center px-4 max-w-4xl mx-auto pointer-events-auto"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E9E6DC]/90 backdrop-blur-md border border-white/20 mb-4 shadow-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E9E6DC]/90 backdrop-blur-md border border-white/20 mb-3 sm:mb-4 shadow-md">
               <span className="w-2 h-2 rounded-full bg-[#ff8a1e] animate-pulse" />
-              <span className="text-[11px] font-mono font-bold text-[#1C1B18] uppercase tracking-wide">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#1C1B18] uppercase tracking-wide">
                 Solar EPC · Kottayam, Kerala
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4 drop-shadow-md">
+            <h1 className="text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-3 sm:mb-4 drop-shadow-md">
               Kerala's Trusted Solar Panel Installation Company
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed mb-6 drop-shadow">
+            <p className="text-xs sm:text-base text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed mb-5 sm:mb-6 drop-shadow">
               Residential, commercial and industrial solar systems — from site assessment and system design to installation, subsidy guidance and ongoing support.
             </p>
 
             <div className="flex items-center justify-center gap-3 flex-wrap">
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-[#ff8a1e] to-[#e9680b] text-white font-bold text-xs shadow-xl hover:scale-105 transition-all flex items-center gap-2"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#ff8a1e] to-[#e9680b] text-white font-bold text-xs shadow-xl hover:scale-105 transition-all flex items-center gap-2"
               >
                 Get a Free Site Survey ↗
               </a>
 
               <a
                 href="#calculator"
-                className="px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs backdrop-blur-md transition-all flex items-center gap-1.5"
+                className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold text-xs backdrop-blur-md transition-all flex items-center gap-1.5"
               >
                 Calculate My Savings
               </a>
             </div>
           </motion.div>
 
-          {/* FLOATING LEFT CARD (SCROLL DRIVEN STATE) */}
-          <div className="absolute bottom-10 left-6 sm:left-10 z-20 max-w-xs sm:max-w-sm p-5 rounded-2xl bg-[#090F12]/80 border border-white/15 backdrop-blur-xl shadow-2xl text-white">
-            <small className="block text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">
-              Engineering state
-            </small>
-            <strong className="block text-lg font-extrabold text-white mt-1">
-              {currentState.leftValue}
-            </strong>
-            <p className="text-xs text-slate-300 leading-relaxed mt-2">
-              {currentState.leftCopy}
-            </p>
-          </div>
+          {/* RESPONSIVE FLOATING CARDS CONTAINER (NO OVERLAP ON MOBILE) */}
+          <div className="absolute bottom-6 sm:bottom-10 inset-x-4 sm:inset-x-10 z-20 flex flex-col sm:flex-row items-stretch sm:items-end justify-between gap-3 sm:gap-6 pointer-events-none">
+            {/* FLOATING LEFT CARD */}
+            <div className="w-full sm:max-w-xs md:max-w-sm p-3.5 sm:p-5 rounded-2xl bg-[#090F12]/85 border border-white/15 backdrop-blur-xl shadow-2xl text-white pointer-events-auto">
+              <small className="block text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">
+                Engineering state
+              </small>
+              <strong className="block text-sm sm:text-lg font-extrabold text-white mt-0.5 sm:mt-1">
+                {currentState.leftValue}
+              </strong>
+              <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed mt-1 sm:mt-2 hidden xs:block sm:block">
+                {currentState.leftCopy}
+              </p>
+            </div>
 
-          {/* FLOATING RIGHT CARD (SCROLL DRIVEN STATE) */}
-          <div className="absolute bottom-10 right-6 sm:right-10 z-20 max-w-xs sm:max-w-sm p-5 rounded-2xl bg-[#090F12]/80 border border-white/15 backdrop-blur-xl shadow-2xl text-white">
-            <small className="block text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">
-              System intelligence
-            </small>
-            <strong className="block text-lg font-extrabold text-[#ffb45d] mt-1">
-              {currentState.rightValue}
-            </strong>
-            <p className="text-xs text-slate-300 leading-relaxed mt-2">
-              {currentState.rightCopy}
-            </p>
+            {/* FLOATING RIGHT CARD */}
+            <div className="w-full sm:max-w-xs md:max-w-sm p-3.5 sm:p-5 rounded-2xl bg-[#090F12]/85 border border-white/15 backdrop-blur-xl shadow-2xl text-white pointer-events-auto">
+              <small className="block text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-widest text-slate-400">
+                System intelligence
+              </small>
+              <strong className="block text-sm sm:text-lg font-extrabold text-[#ffb45d] mt-0.5 sm:mt-1">
+                {currentState.rightValue}
+              </strong>
+              <p className="text-[11px] sm:text-xs text-slate-300 leading-relaxed mt-1 sm:mt-2 hidden xs:block sm:block">
+                {currentState.rightCopy}
+              </p>
+            </div>
           </div>
 
           {/* FINAL STATE WELCOME OVERLAY (APPEARS ON 4th/5th STATE) */}
