@@ -38,7 +38,7 @@ export const SolarGuideSection: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-sm sm:text-base text-[#9aa7b0]"
           >
-            Each topic below is a detailed, practical guide. The homepage only provides the entry point.
+            Explore practical engineering guides on KSEB net-metering, battery storage backup, PM Surya subsidy processing, and panel maintenance across Kerala.
           </motion.p>
         </div>
 

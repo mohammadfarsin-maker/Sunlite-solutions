@@ -52,19 +52,16 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Hide Scrollbar across all browsers while retaining scroll functionality */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
+  width: 0;
+  height: 0;
 }
-::-webkit-scrollbar-track {
-  background: #E9E6DC;
-}
-::-webkit-scrollbar-thumb {
-  background: #C8C4B8;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Premium Card & Surface Utilities */

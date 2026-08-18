@@ -16,7 +16,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = () => {
     { num: '03', title: 'Industrial Solar', desc: 'Turnkey EPC solutions for larger rooftops and industrial electricity requirements.', href: '/solutions/industrial-solar', image: '/solar-solutions/industrial-solar.jpeg' },
     { num: '04', title: 'On-Grid Solar', desc: 'Grid-connected rooftop systems designed to reduce electricity purchases from the grid.', href: '/solutions/on-grid-solar', image: '/solar-solutions/On-Grid-Solar.jpeg' },
     { num: '05', title: 'Hybrid Solar', desc: 'Solar generation combined with battery backup for savings plus additional power resilience.', href: '/solutions/hybrid-solar', image: '/solar-solutions/hybrid.jpeg' },
-    { num: '06', title: 'Off-Grid Solar', desc: 'Independent solar systems for locations or applications where grid availability, reliability or operating requirements call for a standalone design.', href: '/solutions/off-grid-solar', image: '/solar-solutions/off-grid-Solar.jpeg' },
+    { num: '06', title: 'Off-Grid Solar', desc: 'Independent solar systems for locations or applications where grid availability, reliability or operating requirements call for a standalone design.', href: '/solutions/off-grid-solar', image: '/solar-solutions/off-grid-solar.jpeg' },
     { num: '07', title: 'AMC & Monitoring', desc: 'Preventive maintenance, system checks, cleaning guidance and performance support after commissioning.', href: '/solar-amc', image: '/solar-solutions/monitoring.jpeg', isLast: true },
   ];
 
