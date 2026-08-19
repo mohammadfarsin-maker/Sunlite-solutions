@@ -196,7 +196,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
                 <div>
                   <p className="text-[11px] text-[#059669] uppercase tracking-wider font-mono font-semibold">PM Surya Subsidy</p>
                   <p className="text-lg font-bold text-[#059669]">
-                    -₹{activeTier.subsidyRaw.toLocaleString('en-IN')}
+                    -{activeTier.id === '1-3kw' ? 'Up to ' : ''}₹{activeTier.subsidyRaw.toLocaleString('en-IN')}
                   </p>
                 </div>
                 <div>

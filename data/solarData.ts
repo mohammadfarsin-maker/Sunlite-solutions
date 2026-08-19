@@ -23,9 +23,9 @@ export interface SolarTier {
 
 export const SOLAR_TIERS: SolarTier[] = [
   {
-    id: '2-3kw',
+    id: '1-3kw',
     name: 'Essential Home',
-    capacity: '2–3 kW System',
+    capacity: '1–3 kW System',
     badge: 'Bill Reduction Focus',
     priceRaw: 165000,
     subsidyRaw: 78000,

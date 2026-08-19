@@ -18,7 +18,7 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
       eyebrow: 'Residential Solar Advisor',
       title: 'Precision solar tailored for your home.',
       copy: 'Eliminate monthly power bills and protect your household from rising Kerala electricity tariffs. Eligible for up to ₹78,000 Direct PM Surya Ghar Govt Subsidy.',
-      kw: monthlyBill < 5000 ? '2–3 kW' : monthlyBill < 10000 ? '3–5 kW' : monthlyBill < 18000 ? '5–8 kW' : '8–15 kW+',
+      kw: monthlyBill < 5000 ? '1–3 kW' : monthlyBill < 10000 ? '3–5 kW' : monthlyBill < 18000 ? '5–8 kW' : '8–15 kW+',
       goal: 'Zero Electric Bill',
       subsidy: 'Up to ₹78,000',
       payback: '3.2 – 3.8 Years',

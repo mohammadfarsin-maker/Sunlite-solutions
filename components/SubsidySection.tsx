@@ -48,16 +48,16 @@ export const SubsidySection: React.FC = () => {
                 <div className="h-28 w-full relative overflow-hidden bg-[#1C1B18]">
                   <img
                     src="/solar-solutions/Residential-Solar.jpeg"
-                    alt="1 kW Solar Subsidy"
+                    alt="1–3 kW Solar Subsidy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-transparent" />
-                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">1 kW Plant</span>
+                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">1–3 kW Plant</span>
                 </div>
                 <div className="p-4">
                   <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
-                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹78,000*</strong>
+                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">Up to ₹78,000*</strong>
                 </div>
               </div>
 
@@ -65,12 +65,12 @@ export const SubsidySection: React.FC = () => {
                 <div className="h-28 w-full relative overflow-hidden bg-[#1C1B18]">
                   <img
                     src="/solar-solutions/On-Grid-Solar.jpeg"
-                    alt="2 kW Solar Subsidy"
+                    alt="3 kW Solar Subsidy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#DCD9D1] via-transparent to-transparent" />
-                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">2 kW Plant</span>
+                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#1C1B18]/80 text-[#ffb45d] text-[10px] font-bold">3 kW Plant</span>
                 </div>
                 <div className="p-4">
                   <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
@@ -91,7 +91,7 @@ export const SubsidySection: React.FC = () => {
                 </div>
                 <div className="p-4">
                   <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
-                  <strong className="text-xl sm:text-2xl font-black text-[#e9680b] block mt-1">Up to ₹78,000*</strong>
+                  <strong className="text-xl sm:text-2xl font-black text-[#e9680b] block mt-1">₹78,000* Max Cap</strong>
                 </div>
               </div>
             </div>
