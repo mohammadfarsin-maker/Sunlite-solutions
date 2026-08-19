@@ -8,7 +8,7 @@ interface HeroProps {
   onOpenQuoteModal: () => void;
 }
 
-const TOTAL_FRAMES = 240;
+const TOTAL_FRAMES = 300;
 
 const CINEMATIC_STATES = [
   {
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
       let closestFrameIndex = 1;
 
       imagesRef.current.forEach((loadedImg, idx) => {
-        if (loadedImg.complete) {
+        if (loadedImg.complete && loadedImg.naturalWidth > 0) {
           const dist = Math.abs(idx - targetFrameIndex);
           if (dist < closestDist) {
             closestDist = dist;
@@ -110,21 +110,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
   }, []);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    const folder = isMobile ? 'mobile' : 'desktop';
+    let isCancelled = false;
 
-    const posterImg = new Image();
-    posterImg.src = isMobile 
-      ? '/images/herosection/mobile/frame-001.webp'
-      : '/images/herosection/desktop/ezgif-frame-001.png';
-    posterImg.onload = () => {
-      imagesRef.current.set(0, posterImg);
-      setPosterLoaded(true);
-      if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-        drawFrame(0);
-      }
+    const getFramePath = (index: number) => {
+      const frameNum = String(index).padStart(3, '0');
+      return `/images/herosection/desktop/ezgif-frame-${frameNum}.webp`;
     };
 
     const loadFrame = (frameIndex: number): Promise<void> => {
@@ -133,54 +123,69 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal }) => {
           resolve();
           return;
         }
-        const frameNum = String(frameIndex).padStart(3, '0');
         const img = new Image();
-        img.src = isMobile 
-          ? `/images/herosection/mobile/frame-${frameNum}.webp`
-          : `/images/herosection/desktop/ezgif-frame-${frameNum}.png`;
+        img.src = getFramePath(frameIndex);
         img.onload = () => {
-          imagesRef.current.set(frameIndex, img);
+          if (!isCancelled) {
+            imagesRef.current.set(frameIndex, img);
+          }
           resolve();
         };
         img.onerror = () => resolve();
       });
     };
 
-    const keyframes: number[] = [];
-    for (let i = 1; i <= TOTAL_FRAMES; i += 4) {
-      keyframes.push(i);
-    }
-    if (!keyframes.includes(TOTAL_FRAMES)) keyframes.push(TOTAL_FRAMES);
-
-    let isCancelled = false;
-
-    const startProgressiveLoad = async () => {
-      for (const frameIdx of keyframes) {
-        if (isCancelled) return;
-        await loadFrame(frameIdx);
+    // Above-the-fold priority: Preload initial frames (1..3) eagerly for instant paint
+    const initialFrames = [1, 2, 3];
+    Promise.all(initialFrames.map((idx) => loadFrame(idx))).then(() => {
+      if (isCancelled) return;
+      setPosterLoaded(true);
+      if (canvasRef.current) {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
+        drawFrame(1);
       }
 
-      const remainingFrames: number[] = [];
-      for (let i = 1; i <= TOTAL_FRAMES; i++) {
-        if (!imagesRef.current.has(i)) {
-          remainingFrames.push(i);
+      // Progressive Keyframe Loading (step by 4)
+      const keyframes: number[] = [];
+      for (let i = 1; i <= TOTAL_FRAMES; i += 4) {
+        keyframes.push(i);
+      }
+      if (!keyframes.includes(TOTAL_FRAMES)) keyframes.push(TOTAL_FRAMES);
+
+      const startProgressiveLoad = async () => {
+        const BATCH_SIZE = 4;
+
+        // Phase 1: Keyframe passes
+        for (let i = 0; i < keyframes.length; i += BATCH_SIZE) {
+          if (isCancelled) return;
+          const batch = keyframes.slice(i, i + BATCH_SIZE);
+          await Promise.all(batch.map((idx) => loadFrame(idx)));
+          await new Promise((r) => setTimeout(r, 20));
         }
-      }
 
-      const BATCH_SIZE = 8;
-      for (let i = 0; i < remainingFrames.length; i += BATCH_SIZE) {
-        if (isCancelled) return;
-        const batch = remainingFrames.slice(i, i + BATCH_SIZE);
-        await Promise.all(batch.map((idx) => loadFrame(idx)));
-        await new Promise((r) => setTimeout(r, 15));
-      }
-    };
+        // Phase 2: Remaining intermediate frames
+        const remainingFrames: number[] = [];
+        for (let i = 1; i <= TOTAL_FRAMES; i++) {
+          if (!imagesRef.current.has(i)) {
+            remainingFrames.push(i);
+          }
+        }
 
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(() => startProgressiveLoad());
-    } else {
-      setTimeout(startProgressiveLoad, 100);
-    }
+        for (let i = 0; i < remainingFrames.length; i += BATCH_SIZE) {
+          if (isCancelled) return;
+          const batch = remainingFrames.slice(i, i + BATCH_SIZE);
+          await Promise.all(batch.map((idx) => loadFrame(idx)));
+          await new Promise((r) => setTimeout(r, 20));
+        }
+      };
+
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => startProgressiveLoad());
+      } else {
+        setTimeout(startProgressiveLoad, 50);
+      }
+    });
 
     return () => {
       isCancelled = true;
