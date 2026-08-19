@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FAQS } from '../data/solarData';
+import { FAQS } from '../../data/solarData';
 import { HelpCircle, Plus, Minus } from 'lucide-react';
 
 export const FAQSection: React.FC = () => {

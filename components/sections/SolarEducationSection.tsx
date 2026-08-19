@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SOLAR_EDUCATION_CARDS } from '../data/solarData';
+import { SOLAR_EDUCATION_CARDS } from '../../data/solarData';
 import { BookOpen, ExternalLink } from 'lucide-react';
 
 export const SolarEducationSection: React.FC = () => {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SERVICE_AREAS } from '../data/solarData';
+import { SERVICE_AREAS } from '../../data/solarData';
 import { MapPin } from 'lucide-react';
 
 export const ServiceAreasSection: React.FC = () => {

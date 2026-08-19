@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { COMPANY_STATS } from '../data/solarData';
-import CountUp from './ui/CountUp';
+import { COMPANY_STATS } from '../../data/solarData';
+import CountUp from '../ui/CountUp';
 
 export const TrustStatsStrip: React.FC = () => {
   // Parse numeric values and suffixes (e.g. "15+" -> 15 and "+")

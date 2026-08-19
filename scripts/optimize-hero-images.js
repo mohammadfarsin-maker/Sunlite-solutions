@@ -4,19 +4,15 @@ const path = require('path');
 
 const srcDir = path.join(__dirname, '../public/images/herosection');
 const desktopDir = path.join(srcDir, 'desktop');
-const mobileDir = path.join(srcDir, 'mobile');
 
 if (!fs.existsSync(desktopDir)) {
   fs.mkdirSync(desktopDir, { recursive: true });
 }
-if (!fs.existsSync(mobileDir)) {
-  fs.mkdirSync(mobileDir, { recursive: true });
-}
 
-const TOTAL_FRAMES = 240;
+const TOTAL_FRAMES = 300;
 
 async function processFrames() {
-  console.log(`Processing ${TOTAL_FRAMES} frames...`);
+  console.log(`Processing ${TOTAL_FRAMES} desktop frames...`);
   const startTime = Date.now();
 
   for (let i = 1; i <= TOTAL_FRAMES; i++) {
@@ -24,45 +20,34 @@ async function processFrames() {
     const inputPath = path.join(srcDir, `ezgif-frame-${padIndex}.png`);
 
     if (!fs.existsSync(inputPath)) {
-      console.error(`File missing: ${inputPath}`);
+      console.error(`Source PNG missing: ${inputPath}`);
       continue;
     }
 
-    const desktopPath = path.join(desktopDir, `frame-${padIndex}.webp`);
-    const mobilePath = path.join(mobileDir, `frame-${padIndex}.webp`);
+    const desktopPath = path.join(desktopDir, `ezgif-frame-${padIndex}.webp`);
 
-    // Desktop: 1280x720 WebP
+    // Desktop: 1920x1080 WebP (cover fit)
     await sharp(inputPath)
-      .resize(1280, 720, { fit: 'cover' })
-      .webp({ quality: 70, effort: 4 })
+      .resize(1920, 1080, { fit: 'cover' })
+      .webp({ quality: 75, effort: 4 })
       .toFile(desktopPath);
-
-    // Mobile: 640x360 WebP
-    await sharp(inputPath)
-      .resize(640, 360, { fit: 'cover' })
-      .webp({ quality: 65, effort: 4 })
-      .toFile(mobilePath);
 
     // Save poster image (Frame 1)
     if (i === 1) {
-      const posterPath = path.join(srcDir, 'hero-poster.webp');
-      await sharp(inputPath)
-        .resize(1280, 720, { fit: 'cover' })
-        .webp({ quality: 75, effort: 4 })
-        .toFile(posterPath);
-      console.log(`Poster image created: ${posterPath}`);
+      const posterPath = path.join(desktopDir, 'ezgif-frame-001.webp');
+      console.log(`Poster image frame ready: ${posterPath}`);
     }
 
-    if (i % 30 === 0 || i === TOTAL_FRAMES) {
+    if (i % 50 === 0 || i === TOTAL_FRAMES) {
       console.log(`Processed ${i}/${TOTAL_FRAMES} frames...`);
     }
   }
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(2);
-  console.log(`Successfully converted all frames in ${duration}s!`);
+  console.log(`Successfully optimized all ${TOTAL_FRAMES} frames in ${duration}s!`);
 }
 
 processFrames().catch(err => {
-  console.error('Error optimizing frames:', err);
+  console.error('Error optimizing hero frames:', err);
   process.exit(1);
 });

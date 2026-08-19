@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PROJECTS } from '../data/solarData';
+import { PROJECTS } from '../../data/solarData';
 import { Briefcase } from 'lucide-react';
 
 export const ProjectsSection: React.FC = () => {

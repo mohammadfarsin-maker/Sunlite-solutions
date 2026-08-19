@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { COMPANY_STATS } from '../data/solarData';
+import { COMPANY_STATS } from '../../data/solarData';
 import { ShieldCheck, Building2, CheckCircle, Sparkles, MapPin } from 'lucide-react';
 
 export const CompanyDetails: React.FC = () => {

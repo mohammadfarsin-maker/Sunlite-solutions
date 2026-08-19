@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SOLAR_TIERS, SolarTier } from '../data/solarData';
+import { SOLAR_TIERS, SolarTier } from '../../data/solarData';
 import { Zap, CheckCircle2, ArrowRight, Battery, Cpu, Home, ShieldCheck } from 'lucide-react';
 
 interface ServicesSectionProps {

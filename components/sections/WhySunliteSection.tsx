@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { WHY_SUNLITE_POINTS } from '../data/solarData';
+import { WHY_SUNLITE_POINTS } from '../../data/solarData';
 import { ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const WhySunliteSection: React.FC = () => {

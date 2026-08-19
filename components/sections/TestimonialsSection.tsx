@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TESTIMONIALS } from '../data/solarData';
+import { TESTIMONIALS } from '../../data/solarData';
 import { Star, MessageSquare } from 'lucide-react';
 
 export const TestimonialsSection: React.FC = () => {

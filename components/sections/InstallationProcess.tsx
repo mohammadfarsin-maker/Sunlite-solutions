@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { INSTALLATION_STEPS } from '../data/solarData';
+import { INSTALLATION_STEPS } from '../../data/solarData';
 import { Scan, FileCheck, Wrench, Zap, CheckCircle2, ArrowRight, Shield, Clock } from 'lucide-react';
 
 export const InstallationProcess: React.FC = () => {

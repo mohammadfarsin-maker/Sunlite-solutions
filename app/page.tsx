@@ -1,28 +1,32 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Hero } from '../components/Hero';
-import { TrustStatsStrip } from '../components/TrustStatsStrip';
-import { WhySolar } from '../components/WhySolar';
-import { SolarAdvisorSection } from '../components/SolarAdvisorSection';
-import { ServicesSection, SolarTiers } from '../components/SolarTiers';
-import { EnergyFlowExplainer } from '../components/EnergyFlowExplainer';
-import { SolarEducationSection } from '../components/SolarEducationSection';
-import { WhySunliteSection } from '../components/WhySunliteSection';
-import { InstallationProcess } from '../components/InstallationProcess';
-import { SubsidySection } from '../components/SubsidySection';
-import { ROICalculator } from '../components/ROICalculator';
-import { ProjectsSection } from '../components/ProjectsSection';
-import { FeaturedCaseStudySection } from '../components/FeaturedCaseStudySection';
-import { TestimonialsSection } from '../components/TestimonialsSection';
-import { SolarGuideSection } from '../components/SolarGuideSection';
-import { ServiceAreasSection } from '../components/ServiceAreasSection';
-import { FAQSection } from '../components/FAQSection';
-import { ContactSection } from '../components/ContactSection';
-import { Footer } from '../components/Footer';
-import { ScrollToTopButton } from '../components/ScrollToTopButton';
-import { QuoteModal } from '../components/QuoteModal';
+import { Navbar } from '../components/layout/Navbar';
+import { Footer } from '../components/layout/Footer';
+import { ScrollToTopButton } from '../components/layout/ScrollToTopButton';
+
+import { Hero } from '../components/sections/Hero';
+import { TrustStatsStrip } from '../components/sections/TrustStatsStrip';
+import { WhySolar } from '../components/sections/WhySolar';
+import { ServicesSection, SolarTiers } from '../components/sections/SolarTiers';
+import { SolarEducationSection } from '../components/sections/SolarEducationSection';
+import { WhySunliteSection } from '../components/sections/WhySunliteSection';
+import { InstallationProcess } from '../components/sections/InstallationProcess';
+import { SubsidySection } from '../components/sections/SubsidySection';
+import { ProjectsSection } from '../components/sections/ProjectsSection';
+import { FeaturedCaseStudySection } from '../components/sections/FeaturedCaseStudySection';
+import { TestimonialsSection } from '../components/sections/TestimonialsSection';
+import { SolarGuideSection } from '../components/sections/SolarGuideSection';
+import { ServiceAreasSection } from '../components/sections/ServiceAreasSection';
+import { FAQSection } from '../components/sections/FAQSection';
+import { ContactSection } from '../components/sections/ContactSection';
+import { CompanyDetails } from '../components/sections/CompanyDetails';
+
+import { SolarAdvisorSection } from '../components/interactive/SolarAdvisorSection';
+import { EnergyFlowExplainer } from '../components/interactive/EnergyFlowExplainer';
+import { ROICalculator } from '../components/interactive/ROICalculator';
+import { QuoteModal } from '../components/interactive/QuoteModal';
+
 import { SolarTier } from '../data/solarData';
 
 export default function Home() {

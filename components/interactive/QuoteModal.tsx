@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { X, CheckCircle2, ArrowRight, Home, Building, Factory, Shield, Phone, User, MapPin } from 'lucide-react';
-import { SolarTier } from '../data/solarData';
+import { SolarTier } from '../../data/solarData';
 
 interface QuoteModalProps {
   isOpen: boolean;

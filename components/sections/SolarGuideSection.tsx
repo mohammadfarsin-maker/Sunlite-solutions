@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SOLAR_GUIDES } from '../data/solarData';
+import { SOLAR_GUIDES } from '../../data/solarData';
 import { BookMarked, ArrowRight } from 'lucide-react';
 
 export const SolarGuideSection: React.FC = () => {

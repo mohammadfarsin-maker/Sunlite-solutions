@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { WHY_SOLAR_REASONS } from '../data/solarData';
+import { WHY_SOLAR_REASONS } from '../../data/solarData';
 import { Zap, CheckCircle2, AlertTriangle } from 'lucide-react';
 
 export const WhySolar: React.FC = () => {
