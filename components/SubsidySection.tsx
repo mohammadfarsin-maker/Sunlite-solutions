@@ -8,9 +8,9 @@ export const SubsidySection: React.FC = () => {
   return (
     <section id="subsidy" className="py-28 bg-[#E9E6DC] border-t border-[#1C1B18]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column */}
           <div className="lg:col-span-6 space-y-6">
             <motion.div
@@ -57,7 +57,7 @@ export const SubsidySection: React.FC = () => {
                 </div>
                 <div className="p-4">
                   <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
-                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹30,000*</strong>
+                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹78,000*</strong>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ export const SubsidySection: React.FC = () => {
                 </div>
                 <div className="p-4">
                   <small className="text-xs text-[#5A564A] block">Central Subsidy</small>
-                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹60,000*</strong>
+                  <strong className="text-xl sm:text-2xl font-black text-[#1C1B18] block mt-1">₹78,000*</strong>
                 </div>
               </div>
 

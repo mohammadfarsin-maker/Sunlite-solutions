@@ -181,7 +181,7 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#059669] flex-shrink-0" />
-                  <span>Zero-Pressure 25-Year Engineering Proposal</span>
+                  <span>Zero-Pressure 30-Year Engineering Proposal</span>
                 </li>
               </ul>
             </div>

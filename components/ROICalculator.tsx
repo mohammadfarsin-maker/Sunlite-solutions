@@ -27,22 +27,22 @@ export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenQuoteModal }
   const recommendedKW = Math.max(2, Math.min(25, Math.ceil(calculatedKWRaw * 2) / 2));
 
   const grossSystemCost = recommendedKW * 54000 + (hasBattery ? 90000 : 0);
-  const subsidyAmount = recommendedKW >= 3 ? 78000 : 60000;
+  const subsidyAmount = 78000;
   const netSystemCost = Math.max(30000, grossSystemCost - subsidyAmount);
 
   let cumulativeGridCost = 0;
   let currentAnnualGridBill = monthlyBill * 12;
   const annualSavingsData: number[] = [];
 
-  for (let year = 1; year <= 25; year++) {
+  for (let year = 1; year <= 30; year++) {
     cumulativeGridCost += currentAnnualGridBill;
     annualSavingsData.push(Math.round(cumulativeGridCost - netSystemCost));
     currentAnnualGridBill *= (1 + tariffHike / 100);
   }
 
-  const year25CumulativeSavings = cumulativeGridCost - netSystemCost;
+  const year30CumulativeSavings = cumulativeGridCost - netSystemCost;
   const paybackYears = (netSystemCost / (monthlyBill * 12)).toFixed(1);
-  const co2TonsSaved = (recommendedKW * 1.35 * 25).toFixed(1);
+  const co2TonsSaved = (recommendedKW * 1.35 * 30).toFixed(1);
   const treesEquivalent = Math.round(Number(co2TonsSaved) * 45);
 
   const triggerConfetti = () => {
@@ -79,7 +79,7 @@ export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenQuoteModal }
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-5xl font-extrabold text-[#1C1B18] tracking-tight leading-[1.2] mb-6"
           >
-            Calculate Your 25-Year{' '}
+            Calculate Your 30-Year{' '}
             <span className="text-gradient-amber block">Solar Return on Investment.</span>
           </motion.h2>
 
@@ -244,9 +244,9 @@ export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenQuoteModal }
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 
                 <div className="p-5 rounded-2xl bg-[#E9E6DC] border border-[#059669]/30 shadow-soft-sm">
-                  <p className="text-[11px] text-[#059669] font-mono font-bold uppercase">25-Year Net Profit</p>
+                  <p className="text-[11px] text-[#059669] font-mono font-bold uppercase">30-Year Net Profit</p>
                   <p className="text-2xl sm:text-3xl font-black text-[#059669] mt-1">
-                    ₹{Math.round(year25CumulativeSavings / 100000).toFixed(1)} L+
+                    ₹{Math.round(year30CumulativeSavings / 100000).toFixed(1)} L+
                   </p>
                   <p className="text-[10px] text-[#5A564A] mt-1 font-medium">Pure savings in INR</p>
                 </div>
@@ -269,11 +269,11 @@ export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenQuoteModal }
 
               </div>
 
-              {/* 25-Year Cumulative Savings Trajectory Graph (Matching Top Reference Image Exactly) */}
+              {/* 30-Year Cumulative Savings Trajectory Graph (Matching Top Reference Image Exactly) */}
               <div className="space-y-2 mb-8">
                 <div className="flex justify-between text-xs font-mono font-semibold text-[#5A564A]">
-                  <span className="font-bold text-[#1C1B18]">25-Year Cumulative Savings Trajectory</span>
-                  <span className="text-[#059669] font-extrabold font-mono">Year 25: ₹{Math.round(year25CumulativeSavings).toLocaleString('en-IN')}</span>
+                  <span className="font-bold text-[#1C1B18]">30-Year Cumulative Savings Trajectory</span>
+                  <span className="text-[#059669] font-extrabold font-mono">Year 30: ₹{Math.round(year30CumulativeSavings).toLocaleString('en-IN')}</span>
                 </div>
                 
                 <div className="bg-[#E9E6DC] border border-[#1C1B18]/10 rounded-2xl p-4 pt-6 shadow-inner relative overflow-hidden">
@@ -303,15 +303,15 @@ export const ROICalculator: React.FC<ROICalculatorProps> = ({ onOpenQuoteModal }
                       />
                       {/* Start Node Dot (Year 0) */}
                       <circle cx="0" cy="60" r="5" fill="#d97706" className="drop-shadow" />
-                      {/* End Node Dot (Year 25) */}
+                      {/* End Node Dot (Year 30) */}
                       <circle cx="300" cy="10" r="5" fill="#059669" className="drop-shadow-md" />
                     </svg>
                   </div>
 
                   <div className="flex items-center justify-between text-[10px] font-mono text-[#7E7A6C] pt-2 border-t border-[#1C1B18]/10 mt-1">
                     <span>Year 0</span>
-                    <span>Year 10</span>
-                    <span className="font-bold text-[#059669]">Year 25</span>
+                    <span>Year 15</span>
+                    <span className="font-bold text-[#059669]">Year 30</span>
                   </div>
                 </div>
               </div>

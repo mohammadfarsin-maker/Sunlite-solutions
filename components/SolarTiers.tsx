@@ -122,7 +122,7 @@ export const SolarTiers: React.FC<ServicesSectionProps> = ({ onSelectTier }) => 
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg text-[#5A564A] leading-relaxed font-normal"
           >
-            Select from our Tier-1 monocrystalline N-Type TOPCon solar packages. All packages qualify for up to ₹78,000 Direct Govt Bank Subsidy.
+            Select from our Tier-1 TOPCon & Bifacial solar packages. All packages qualify for up to ₹78,000 Direct Govt Bank Subsidy.
           </motion.p>
         </div>
 

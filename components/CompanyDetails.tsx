@@ -79,7 +79,7 @@ export const CompanyDetails: React.FC = () => {
               </div>
               <div>
                 <span className="text-xs font-mono uppercase tracking-widest text-[#b45309] font-bold">TRIPLE GUARANTEE SHIELD</span>
-                <h3 className="text-2xl font-extrabold text-[#1C1B18]">25-Year Triple Protection Seal</h3>
+                <h3 className="text-2xl font-extrabold text-[#1C1B18]">30-Year Triple Protection Seal</h3>
               </div>
             </div>
 
@@ -87,8 +87,8 @@ export const CompanyDetails: React.FC = () => {
               <div className="flex items-start gap-3 p-4 rounded-xl bg-[#E9E6DC] border border-[#1C1B18]/10 text-xs">
                 <CheckCircle className="w-4 h-4 text-[#059669] flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-bold text-[#1C1B18]">25-Year Linear Power Warranty</p>
-                  <p className="text-[#5A564A]">Guaranteed to deliver at least 87.4% rated power output at Year 25.</p>
+                  <p className="font-bold text-[#1C1B18]">30-Year Warranty</p>
+                  <p className="text-[#5A564A]">Guaranteed to deliver at least 87.4% rated power output at Year 30.</p>
                 </div>
               </div>
 
@@ -123,10 +123,10 @@ export const CompanyDetails: React.FC = () => {
           >
             <div className="bg-[#DCD9D1] p-8 rounded-3xl border border-[#1C1B18]/15 shadow-sm">
               <h3 className="text-xl font-bold text-[#1C1B18] mb-3">
-                Tier-1 N-Type TOPCon Silicon Engineering
+                Tier-1 TOPCon & Bifacial Panel Engineering
               </h3>
               <p className="text-sm text-[#5A564A] leading-relaxed mb-6">
-                Sunlite Solutions exclusively uses N-Type TOPCon bifacial glass-glass solar cells with up to 23.2% module efficiency, offering lower degradation and superior performance in high Indian summer temperatures.
+                Sunlite Solutions exclusively uses TOPCon & Bifacial solar panels with up to 23.2% module efficiency, offering lower degradation and superior performance in high Indian summer temperatures.
               </p>
 
               {/* Badges */}

@@ -28,11 +28,11 @@ export const SOLAR_TIERS: SolarTier[] = [
     capacity: '2–3 kW System',
     badge: 'Bill Reduction Focus',
     priceRaw: 165000,
-    subsidyRaw: 60000,
-    finalPriceRaw: 105000,
+    subsidyRaw: 78000,
+    finalPriceRaw: 87000,
     dailyGeneration: '8 – 12 kWh / day',
     annualSavings: '₹40,000 / year',
-    paybackPeriod: '2.6 Years',
+    paybackPeriod: '2.2 Years',
     roofArea: '200–300 sq. ft',
     recommendedFor: 'Smaller homes with lower electricity consumption',
     appliances: [
@@ -43,9 +43,9 @@ export const SOLAR_TIERS: SolarTier[] = [
       'TV & Basic Electronics'
     ],
     specs: {
-      panelType: '550W TOPCon Monocrystalline Bifacial',
+      panelType: 'TOPCon & Bifacial Panels',
       inverterEfficiency: '98.6% MPPT Smart Hybrid',
-      warranty: '25 Year Linear Power Warranty',
+      warranty: '30 Year Warranty',
       monitoring: 'AI Mobile App Telemetry',
       batterySupport: 'Lithium LFP Ready'
     }
@@ -71,9 +71,9 @@ export const SOLAR_TIERS: SolarTier[] = [
       'Future EV Charger Ready'
     ],
     specs: {
-      panelType: '575W N-Type TOPCon Dual-Glass Panels',
+      panelType: 'TOPCon & Bifacial Panels',
       inverterEfficiency: '98.9% High Voltage Hybrid',
-      warranty: '25 Year Performance + 12 Year Product Warranty',
+      warranty: '30 Year Warranty',
       monitoring: '24/7 Cellular + Wi-Fi Cloud Diagnostic',
       batterySupport: 'Modular Stackable LFP'
     }
@@ -99,9 +99,9 @@ export const SOLAR_TIERS: SolarTier[] = [
       'Level 2 EV Fast Charger'
     ],
     specs: {
-      panelType: '600W+ Ultra-Efficient Glass-Glass Modules',
+      panelType: 'TOPCon & Bifacial Panels',
       inverterEfficiency: '99.1% Dual-MPPT Grade',
-      warranty: '30 Year Guaranteed Power Output (>87.4%)',
+      warranty: '30 Year Warranty',
       monitoring: 'Enterprise AI Predictive Maintenance',
       batterySupport: 'High-Voltage Battery Bank Support'
     }
@@ -127,9 +127,9 @@ export const SOLAR_TIERS: SolarTier[] = [
       'Fleet EV Charging Network'
     ],
     specs: {
-      panelType: 'Aiko Neostar ABC N-Type 620W Modules',
+      panelType: 'TOPCon & Bifacial Panels',
       inverterEfficiency: '99.4% Commercial Three-Phase Inverter',
-      warranty: '25 Year Comprehensive Protection',
+      warranty: '30 Year Warranty',
       monitoring: 'Operations Center Sync',
       batterySupport: 'Industrial Scalable Storage'
     }
@@ -189,7 +189,7 @@ export const COMPANY_STATS = [
 export const WHY_SOLAR_REASONS = [
   {
     title: 'Hedge Against 8-12% Annual Tariff Hikes',
-    description: 'Traditional utility grid prices rise consistently every year. Solar locks in your electricity production cost at ₹0/unit for 25+ years.',
+    description: 'Traditional utility grid prices rise consistently every year. Solar locks in your electricity production cost at ₹0/unit for 30+ years.',
     tag: 'Financial Freedom',
     metric: '100%',
     metricLabel: 'Protection from Inflation',
@@ -204,10 +204,10 @@ export const WHY_SOLAR_REASONS = [
     image: '/images/subsidy_clipboard_1786989540561.jpg'
   },
   {
-    title: '25-Year Guaranteed Performance Warranty',
-    description: 'Our Tier-1 N-Type TOPCon panels are engineered to retain at least 87.4% generation efficiency even after 25 years of continuous exposure.',
+    title: '30-Year Warranty',
+    description: 'Our Tier-1 TOPCon & Bifacial panels are engineered to retain at least 87.4% generation efficiency even after 30 years of continuous exposure.',
     tag: 'Tier-1 Engineering',
-    metric: '25 Yrs',
+    metric: '30 Yrs',
     metricLabel: 'Performance Shield',
     image: '/solar-solutions/On-Grid-Solar.jpeg'
   },

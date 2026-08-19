@@ -157,7 +157,7 @@ export const FeaturedCaseStudySection: React.FC = () => {
                   02 · Custom Engineering Solution
                 </h3>
                 <span className="text-[10px] font-mono font-bold text-[#b45309] bg-[#d97706]/10 px-2 py-0.5 rounded">
-                  12x N-Type TOPCon Panels
+                  12x TOPCon & Bifacial Panels
                 </span>
               </div>
               <p className="text-xs text-[#5A564A] leading-relaxed font-normal">

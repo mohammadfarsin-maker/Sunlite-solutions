@@ -131,7 +131,7 @@ export const WhySolar: React.FC = () => {
 
             {/* Selector */}
             <div className="flex items-center gap-2 bg-[#E9E6DC] p-2 rounded-2xl border border-[#1C1B18]/10">
-              {[5, 10, 15, 25].map((yr) => (
+              {[5, 10, 15, 30].map((yr) => (
                 <button
                   key={yr}
                   onClick={() => setComparisonYears(yr)}
@@ -277,7 +277,7 @@ export const WhySolar: React.FC = () => {
               {/* Bottom Info */}
               <div className="pt-4 mt-4 border-t border-emerald-500/20 text-xs text-emerald-900 flex items-center justify-between font-medium">
                 <span>✅ Guaranteed ₹0 Electricity Bill</span>
-                <span className="font-bold text-[#b45309]">25-Yr Asset</span>
+                <span className="font-bold text-[#b45309]">30-Yr Asset</span>
               </div>
             </div>
 

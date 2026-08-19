@@ -72,7 +72,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, selecte
                   Get Instant Custom Solar Quote (₹)
                 </h3>
                 <p className="text-xs text-[#5A564A] mt-1">
-                  Receive an immediate breakdown of system cost, direct bank subsidy, and 25-year return.
+                  Receive an immediate breakdown of system cost, direct bank subsidy, and 30-year return.
                 </p>
               </div>
 
@@ -259,7 +259,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, selecte
               <div className="p-4 rounded-2xl bg-[#DCD9D1] border border-[#1C1B18]/10 text-xs text-left space-y-2 mb-6 max-w-md mx-auto">
                 <p className="flex justify-between"><span className="text-[#5A564A]">Target System Size:</span> <span className="font-bold text-[#1C1B18]">{systemSize}</span></p>
                 <p className="flex justify-between"><span className="text-[#5A564A]">Govt Subsidy Eligibility:</span> <span className="font-bold text-[#059669]">₹78,000 Direct DBT</span></p>
-                <p className="flex justify-between"><span className="text-[#5A564A]">Est. 25-Yr Net Savings:</span> <span className="font-bold text-[#b45309]">₹24.5+ Lakhs</span></p>
+                <p className="flex justify-between"><span className="text-[#5A564A]">Est. 30-Yr Net Savings:</span> <span className="font-bold text-[#b45309]">₹30+ Lakhs</span></p>
               </div>
 
               <button
