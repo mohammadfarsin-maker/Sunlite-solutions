@@ -57,7 +57,7 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-[#d97706]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -92,10 +92,10 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
 
         {/* Advisor Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          
+
           {/* Left Column: Persona Selector Tabs & Trust Summary (Eliminating dead empty space) */}
           <div className="lg:col-span-4 flex flex-col justify-between gap-6">
-            
+
             {/* Persona Tabs */}
             <div className="flex flex-col gap-3">
               {[
@@ -127,11 +127,10 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
                   <button
                     key={p.id}
                     onClick={() => setActivePersona(p.id as 'home' | 'business' | 'industry')}
-                    className={`p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative group overflow-hidden ${
-                      isActive
+                    className={`p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 relative group overflow-hidden ${isActive
                         ? 'bg-[#DCD9D1] border-[#d97706] shadow-soft-md scale-[1.02]'
                         : 'bg-[#E9E6DC] border-[#1C1B18]/10 hover:bg-[#DCD9D1]/70 hover:border-[#1C1B18]/20'
-                    }`}
+                      }`}
                   >
                     {isActive && (
                       <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#d97706] rounded-r-full" />
@@ -139,9 +138,8 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
-                          isActive ? 'bg-[#1C1B18] text-[#ffb45d] shadow-sm' : 'bg-[#DCD9D1] text-[#38362E] group-hover:bg-[#1C1B18] group-hover:text-[#ffb45d]'
-                        }`}>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${isActive ? 'bg-[#1C1B18] text-[#ffb45d] shadow-sm' : 'bg-[#DCD9D1] text-[#38362E] group-hover:bg-[#1C1B18] group-hover:text-[#ffb45d]'
+                          }`}>
                           <Icon className="w-5 h-5" />
                         </div>
                         <div>
@@ -154,9 +152,8 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
                         </div>
                       </div>
 
-                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
-                        isActive ? 'bg-[#059669]/15 text-[#059669] border border-[#059669]/30' : 'bg-[#1C1B18]/5 text-[#7E7A6C]'
-                      }`}>
+                      <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${isActive ? 'bg-[#059669]/15 text-[#059669] border border-[#059669]/30' : 'bg-[#1C1B18]/5 text-[#7E7A6C]'
+                        }`}>
                         {p.badge}
                       </span>
                     </div>
@@ -176,10 +173,6 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
               <ul className="space-y-2 text-xs text-[#38362E] font-medium">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#059669] flex-shrink-0" />
-                  <span>3D Drone Roof & Shadow Path Analysis</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#059669] flex-shrink-0" />
                   <span>KSEB Net-Meter Feasibility Verification</span>
                 </li>
                 <li className="flex items-center gap-2">
@@ -197,7 +190,7 @@ export const SolarAdvisorSection: React.FC<SolarAdvisorProps> = ({ onOpenQuoteMo
 
           {/* Right Column: Dynamic Interactive Recommendation Panel */}
           <div className="lg:col-span-8 bg-[#1C1B18] p-7 sm:p-10 rounded-3xl text-white relative overflow-hidden flex flex-col justify-between shadow-soft-lg border border-white/10">
-            
+
             {/* Subtle glow in card */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#d97706]/15 via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
 
